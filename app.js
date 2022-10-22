@@ -5,7 +5,6 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const UserModel = require('./Models/UserModel');
 const cors = require('cors');
-const path = require('path')
 require('./conn');
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -50,45 +49,45 @@ app.listen(PORT,()=>{
     console.log(`Listeninig to the port ${PORT}`);
 });
 
-const socketPort = process.env.SOCKET_PORT || 8800;
+// const socketPort = process.env.SOCKET_PORT || 8800;
 
-// socket io code 
-const io = require('socket.io')(socketPort, {
-    cors: {
-        origin: 'http://localhost:3000'
-    }
-});
+// // socket io code 
+// const io = require('socket.io')(socketPort, {
+//     cors: {
+//         origin: 'http://localhost:3000'
+//     }
+// });
 
-let activeUsers = []
+// let activeUsers = []
 
-io.on('connection', (socket)=>{
-    // add new user 
-    socket.on('new-user-add', (newUserId)=>{
-        // if user is not added previously        
-        if(!activeUsers.some((user)=> user.userId === newUserId))
-        {
-            activeUsers.push({
-                userId: newUserId,
-                socketId: socket.id
-            })
-        }
+// io.on('connection', (socket)=>{
+//     // add new user 
+//     socket.on('new-user-add', (newUserId)=>{
+//         // if user is not added previously        
+//         if(!activeUsers.some((user)=> user.userId === newUserId))
+//         {
+//             activeUsers.push({
+//                 userId: newUserId,
+//                 socketId: socket.id
+//             })
+//         }
     
 
-        // console.log('Connected Users', activeUsers);
-        io.emit('get-users', activeUsers)
-    })
+//         // console.log('Connected Users', activeUsers);
+//         io.emit('get-users', activeUsers)
+//     })
 
-    // Send Message
-    socket.on('send-message', (data)=>{
-        const {receiverId} = data;
-        const user = activeUsers.find((user)=> user.userId === receiverId);
-        if(user){
-            io.to(user.socketId).emit('receive-message', data)
-        }
-    })
+//     // Send Message
+//     socket.on('send-message', (data)=>{
+//         const {receiverId} = data;
+//         const user = activeUsers.find((user)=> user.userId === receiverId);
+//         if(user){
+//             io.to(user.socketId).emit('receive-message', data)
+//         }
+//     })
 
-    socket.on('disconnect', ()=>{
-        activeUsers = activeUsers.filter((user)=> user.socketId !== socket.id)
-        io.emit('get-users', activeUsers)
-    })
-})
+//     socket.on('disconnect', ()=>{
+//         activeUsers = activeUsers.filter((user)=> user.socketId !== socket.id)
+//         io.emit('get-users', activeUsers)
+//     })
+// })
