@@ -33,7 +33,7 @@ app.get('/',(req,res)=>{
 //     })
 // }
 
-app.use("/uploads", express.static("./uploads"));
+// app.use("/uploads", express.static("./uploads"));
 
 // Linking Router 
 app.use(require('./Routes/UserRoute'));
