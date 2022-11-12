@@ -1,0 +1,186 @@
+.swiper {
+  width: 100%;
+  height: 600px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  position: relative;
+}
+
+.swiper-button-next {
+  right: 20px !important;
+}
+
+.swiper-button-prev {
+  left: 20px !important;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-position: top center;
+}
+
+.swiper-slide .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 4;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay .slide-item {
+  width: 100%;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.swiper-slide .overlay h1 {
+  display: inline-block;
+  --animate-duration: 3s;
+  font-size: 3.8rem;
+  width: 100%;
+  font-weight: 700;
+}
+
+.swiper-slide .overlay .title2{
+  font-size: 3.1rem;
+}
+
+.swiper-slide .overlay h1 span {
+  color: var(--purple);
+}
+
+.swiper-slide .overlay .slide-item > span {
+  font-size: 1.1rem;
+  display: inline-block;
+  font-weight: 500;
+  margin-top: 1.1rem !important;
+}
+
+.swiper-slide .buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.swiper-slide .buttons button {
+  background-color: var(--orange);
+  color: #fff;
+  width: 10.5rem;
+  height: 3.35rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+  text-align: center;
+}
+
+.swiper-slide .buttons button:nth-child(2) {
+  background-color: transparent;
+  border: 2px solid #fff;
+  transition: all 0.3s;
+}
+
+.swiper-slide .buttons button:nth-child(1):hover {
+  background-color: var(--purple);
+  transition: all 0.3s;
+}
+
+.swiper-slide .buttons button:nth-child(2):hover {
+  background-color: var(--orange);
+  transition: all 0.3s;
+}
+
+@media screen and (max-width: 950px) {
+  .swiper-slide .overlay h1 {
+    font-size: 2.7rem !important;
+    max-width: 90%;
+  }
+  .swiper-button-next {
+    display: none;
+  }
+
+  .swiper-button-prev {
+    display: none;
+  }
+  .swiper-slide .overlay {
+   padding: 1rem;
+   
+  }
+}
+
+@media screen and (max-width:720px) {
+  .swiper-slide .overlay h1 {
+    font-size: 1.5rem !important;
+    max-width: 98%;
+  }
+  .swiper{
+  height: 430px;
+  }
+  .overlay .slide-item {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -37%);
+  }
+  .swiper-slide .overlay .slide-item > span {
+    max-width: 95% !important;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .swiper-slide .overlay .slide-item > span {
+    display: none;
+  }
+  .swiper-slide .buttons button {
+    max-width: 9.3rem;
+    height: 2.9rem;
+    font-size: .88rem;
+  }
+  .swiper{
+    height: 360px;
+    }
+    .swiper-slide .overlay h1 {
+      font-size: 1.3rem !important;
+      max-width: 97%;
+    }
+
+    .swiper-slide .overlay .title span{
+      font-size: 1.3rem !important;
+    }
+
+    .swiper-slide .overlay .title h1{
+      font-size: 1.1rem !important;
+      margin-top: .5rem;
+    }
+    .swiper-slide .buttons {
+      margin-top: 2rem;
+    }
+}

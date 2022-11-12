@@ -1,0 +1,218 @@
+.advisor-view{
+    width: 100%;
+    margin: 0rem auto;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 2rem 3rem;
+    border-top: 1px solid #eee;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+}
+
+.advisor-view .av-left{
+    padding-left: 2rem;
+    position: relative;
+}
+
+.av-left .copy-profile-link{
+    position: absolute;
+    right: 7%;
+    top: 3.5%;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.copy-profile-link svg{
+    font-size: 1.4rem;
+}
+
+.copy-profile-link:hover{
+    box-shadow: 0 1rem 1.5rem rgba(0,0,0,.175)!important;
+    transition: all .3s;
+}
+
+.advisor-view .back-button{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1.3rem 1.9rem;
+    margin-top: .9rem;
+}
+
+.back-button .back{
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.back:hover{
+    box-shadow: 0 1rem 1.5rem rgba(0,0,0,.175)!important;
+    transition: all .3s;
+}
+
+.back svg{
+    font-size: 1.5rem;
+    color: #555;
+}
+
+.back-button .text{
+    font-weight: 500;
+    letter-spacing: .6px;
+}
+
+.advisor-view .info .av-title{
+    font-size: 1.1rem;
+    max-width: 90%;
+    font-weight: 500;
+}
+
+.advisor-view .a-details .c-profile img{
+    width: 7.3rem;
+    height: 7.3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.advisor-view .a-details{
+    display: flex;
+    gap: 1.4rem;
+    align-items: center;
+}
+
+/* Right side  */
+
+.av-message-box{
+    width: 100%;
+    padding: 2rem;
+    border: 1.9px dotted #a3a0aa;
+    border-radius: 6px;
+    background-color: #F8F8F9;
+}
+
+.av-message-box .av-title{
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #2a1f41;
+}
+
+.av-message-box .av-descript{
+    font-size: .9rem;
+    margin-top: 5px;
+    font-weight: 500;
+    color: #a3a0aa;
+}
+
+.av-message .av-label{
+    font-size: .94rem;
+    margin: 15px 0;
+    font-weight: 500;
+    color: #a3a0aa;
+}
+
+.av-message .av-message-btn{
+    margin-top: 1rem;
+    margin-bottom: 10px;
+    border-radius: 15px !important;
+    border-top-left-radius: 0 !important;
+    width: 98.6%;
+    padding: 12px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: capitalize;
+    letter-spacing: .6px;
+    font-size: 1.2rem;
+}
+
+.av-deal-info{
+    display: flex;
+    width: 96%;
+    background-color: #F8F8F9;
+    margin-top: 2rem;
+    padding: 2.4rem 2rem;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.av-deal-info .inner .icon{
+    display: flex;
+    gap: .6rem;
+    align-items: center;
+}
+
+.av-deal-info .icon span svg{
+    color: #3E50F7;
+    font-size: 1.4rem;
+}
+
+.av-deal-info .icon span:nth-child(2){
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2a1f41;
+    letter-spacing: .3px;
+}
+
+.av-expertise .expertise-title{
+    font-size: .98rem;
+    margin: 15px 0;
+    font-weight: 500;
+    color: #a3a0aa;
+}
+
+.av-expertise ul{
+    margin-left: 1rem;
+}
+
+.av-expertise ul li{
+    font-weight: 500 !important;
+    font-size: .95rem !important;
+    color: #2a1f41 !important;
+    margin-bottom: 9px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.av-expertise ul li svg{
+    color: #3E50F7;
+}
+
+.av-expertise ul li:hover{
+    color: inherit;
+}
+
+.short-bio,.linkdin-link{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.linkdin-link a{
+    font-weight: 700;
+}
+
+.short-bio span:nth-child(1),
+.linkdin-link span:nth-child(1){
+    font-size: .98rem;
+    font-weight: 500;
+    color: #a3a0aa;
+}
+
+.short-bio span:nth-child(2){
+    font-size: 1.02rem;
+    font-weight: 500;
+    letter-spacing: .2px;
+    word-spacing: 1.2px;
+    color: #555;
+}

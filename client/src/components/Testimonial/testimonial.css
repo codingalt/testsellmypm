@@ -1,0 +1,64 @@
+.tl-container{
+    width: 100%;
+    height: 88vh;
+    background-color: #EAF0FF;
+    padding: 2rem;
+}
+
+.testimonial-swiper .swiper-slide{
+    width: 100% !important;
+    /* background: #EAF0FF !important; */
+    background: transparent !important;
+    justify-content: inherit;
+    align-items: inherit;
+}
+
+.tl-container .review-descript{
+    max-width: 60%;
+    margin: 4rem auto;
+    position: relative;
+}
+
+.review-descript svg{
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #3E50F7;
+    color: var(--purple2);
+    position: absolute;
+    top: -8%;
+    left: -7%;
+}
+
+.review-descript span{
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+    text-align: justify !important;
+}
+
+@media screen and (max-width:768px) {
+    .tl-container{
+        width: 100%;
+        height: 75vh;
+        padding: 1rem;
+    }
+    .tl-container .review-descript{
+        max-width: 100%;
+        margin: 4rem auto;
+        position: relative;
+    }
+    .review-descript span{
+        font-size: 1.15rem;
+    }
+    .review-descript svg{
+        font-size: 1.5rem;
+        position: absolute;
+        top: -22%;
+        left: 0%;
+    }
+    .tl-container .section-header .section-title{
+        font-size: 1.8rem;
+    }
+    .tl-container .section-header .section-title br{
+        display: none;
+    }
+}

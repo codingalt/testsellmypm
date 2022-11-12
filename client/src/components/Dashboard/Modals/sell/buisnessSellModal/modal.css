@@ -1,0 +1,350 @@
+.memo-container{
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.memo-header{
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 20px;
+}
+
+.memo-header .left span,.center span{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.memo-container .banner{
+    width: 100%;
+    margin: auto;
+    height: 260px;
+    position: relative;
+}
+
+.memo-container .banner .banner-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.memo-container .banner .comapny-logo{
+    position: absolute;
+    top: 70%;
+    z-index: 10;
+    left: 10%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.modal-content{
+    width: 95vw;
+    max-width: 1540px;
+    margin: auto;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    padding-bottom: 10px;
+    max-height: 740px;
+}
+
+.payment-modal .modal-content{
+    width: 40vw;
+}
+
+.modal-body{
+    padding-bottom: 5rem;
+    overflow-y: auto;
+}
+
+.modal-footer .btn{
+    height: 3.5rem;
+}
+
+.primary-details{
+    width: 100%;
+    position: relative;
+}
+
+.primary-details .left{
+    position: absolute;
+    left: 23%;
+    margin-top: 2rem;
+}
+
+.left .inner .cat-type{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.left .inner .title{
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: red;
+}
+
+.left .inner .location span{
+    font-size: 1rem;
+}
+
+.left .inner .socials{
+    margin-top: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.socials .links{
+    display: flex;
+    gap: .8rem;
+}
+
+.socials .links span{
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: #325FD7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links svg{
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.property-manager-details{
+    margin-top: 15rem;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+.property-manager-details .left,.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.property-manager-details .left .heading{
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.property-manager-details .left ul li{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 6px;
+}
+
+.property-manager-details .left ul li span{
+    font-size: .96rem;
+}
+
+.property-manager-details .left ul li svg{
+    font-size: 1.2rem;
+    color: #325FD7;
+}
+
+.right .r-box{
+    background: #f2f2f2;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 80%;
+    color: #000;
+}
+
+.r-box .heading{
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.r-box ul li{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.managment-summary{
+    margin-top: 4rem;
+}
+
+.managment-summary .left{
+    display: flex;
+    flex-direction: column;
+}
+
+.managment-summary .left2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.managment-summary .left table th{
+    font-size: .84rem;
+}
+
+.managment-summary .right .heading{
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.managment-summary .right{
+    display: flex;
+    flex-direction: column;
+}
+
+.managment-summary .right .heading span{
+    font-weight: 500;
+    color: #000;
+    font-size: 1.3rem;
+}
+
+.managment-summary .right table{
+    border-radius: 6px;
+    background-color: #f2f2f2;
+}
+
+.memo-container .buisness-detail{
+    width: 100%;
+    padding: 4rem;
+    max-width: 80%;
+}
+
+.basic-details{
+    max-width: 50%;
+    padding-left: 2rem;
+}
+
+.basic-details .heading,.b-descript{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.basic-details .heading span:nth-child(1),.b-descript span:nth-child(1){
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #325FD7;
+}
+
+.memo-container .location {
+    display: flex;
+    gap: 3rem;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.memo-container li:nth-child(1){
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    font-weight: 500;
+}
+
+.memo-container ul li:nth-child(2){
+    font-size: 1.05rem !important;
+}
+
+.memo-container .location li{
+    font-size: 1.2rem;
+}
+
+.memo-container .location li svg{
+    color: #325FD7;
+}
+
+.memo-container .location .url{
+    background: #f2f2f2;
+    padding: 5px 10px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.memo-container .url li:nth-child(1){
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #325FD7;
+}
+
+.pmd-listing-contract{
+    margin-top: 6rem;
+    border-top: none;
+}
+
+.ms-listing-contract{
+    margin-top: 1.6rem;
+}
+
+@media screen and (max-width:768px) {
+    .memo-container .buisness-detail{
+        width: 100%;
+        padding: 1rem;
+        max-width: 100%;
+        text-align: justify;
+        margin-top: 1rem;
+    }
+
+    .managment-summary .right{
+        margin-top: 1rem;
+    }
+
+    .property-manager-details .r-box{
+        margin-top: 1rem;
+        width: 100%;
+    }
+    .memo-header .left{
+        display: none;
+    }
+
+    .memo-header .center span{
+        font-size: 1rem;
+    }
+    .memo-container .banner{
+        height: 210px;    
+    }
+    .memo-container .banner .comapny-logo{
+        position: absolute;
+        top: 70%;
+        z-index: 10;
+        left: 6%;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+    }
+    .primary-details .left{
+        position: absolute;
+        left: 10%;
+        margin-top: 5rem;
+    }
+    .modal-content{
+        width: 95vw;
+    }
+    .property-manager-details{
+        margin-top: 21rem;
+    }
+    .left .inner .socials{
+       flex-wrap: wrap;
+    }
+}
+

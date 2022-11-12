@@ -8,6 +8,7 @@ const cors = require('cors');
 require('./conn');
 const app = express();
 const PORT = process.env.PORT || 5000;
+const path = require('path')
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -19,19 +20,14 @@ app.get('/',(req,res)=>{
     res.json("Server started");
 })
 
-// const __dirname1 = path.resolve();
-// console.log(__dirname1);
-// if(process.env.NODE_ENV === 'production'){
-//     app.use(express.static(path.join(__dirname1, "client/build")));
+const __dirname1 = path.resolve();
 
-//     app.get('*', (req,res)=>{
-//         res.sendFile(path.resolve(__dirname1, "client", "build", "index.html"));
+// if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+//     app.use(express.static('client/build'));
+//     app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname1 + '/client/build/index.html'));
 //     });
-// }else{
-//     app.get('/',(req,res)=>{
-//         res.json("Server started");
-//     })
-// }
+//    }
 
 // app.use("/uploads", express.static("./uploads"));
 
@@ -44,6 +40,7 @@ app.use(require('./Routes/ListingRoute'));
 app.use(require('./Routes/BuyerRequestsRoute'));
 app.use(require('./Routes/ApprovedRequestsRoute'));
 app.use(require('./Routes/PaymentRoute'));
+app.use(require('./Routes/AdvisorRoute'));
 
 app.listen(PORT,()=>{
     console.log(`Listeninig to the port ${PORT}`);

@@ -1,0 +1,57 @@
+.success-pay{
+    width: 100%;
+    margin: 4rem auto;
+    display: flex;
+    justify-content: center;
+}
+
+.inner .top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.top span:nth-child(1){
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: #5cb85c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top span svg{
+    font-size: 3rem;
+    color: #fff;
+}
+
+.top span:nth-child(2){
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: .6px;
+}
+
+.success-pay .bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.success-pay .bottom span{
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #5cb85c;
+}
+
+.success-pay .bottom a{
+    margin: 0 auto;
+}
+
+.success-pay .bottom button{
+    width: 16rem;
+    margin: 0 auto;
+}

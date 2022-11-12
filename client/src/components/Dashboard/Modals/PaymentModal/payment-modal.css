@@ -1,0 +1,54 @@
+.StripeCheckout{
+    width: 100%;
+    margin-top: 2.3rem;
+    height: 2.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.StripeCheckout span{
+    height: 100% !important;
+    text-align: center;
+    display: flex !important;
+    justify-content: center;
+    padding: 0 !important;
+    align-items: center;
+}
+
+.payment-modal label{
+    margin-top: 13px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-left: 3px;
+}
+
+.payment-modal .form-select{
+    margin-top: 5px;
+    height: 2.82rem;
+}
+
+.payment-modal .pkg-detail{
+    width: 100%;
+    padding-left: 6px;
+}
+
+.payment-modal .pkg-detail .p-name,.p-price{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 12px;
+}
+
+.pkg-detail .p-name span,.p-price span{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.pkg-detail .p-name span:nth-child(1){
+    color: var(--purple2);
+}
+
+.pkg-detail .p-price span:nth-child(1){
+    color: var(--purple2);
+}

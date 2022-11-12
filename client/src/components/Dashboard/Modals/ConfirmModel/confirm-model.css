@@ -1,0 +1,11 @@
+.payment-modal .confirm-buttons {
+    display: flex;
+    gap: .6rem;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.edit-modal .modal-content{
+    width: 65vw;
+}

@@ -1,0 +1,99 @@
+:root{
+  --purple: #8976F7;
+  --purple2: #744BBE;
+  --orange: #ea696e;
+  --text: #233E57;
+  --white: #fff;
+  --pink: #E74457;
+  --blue: #63C5EB;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none !important;
+  color: #555;
+  font-weight: 600;
+}
+
+::selection {
+  color: #fff;
+  background: var(--purple);
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.App{
+    overflow-x: hidden;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.button{
+  width: auto;
+  padding: 1.1rem 2.6rem;
+  background-color: var(--purple);
+  color: var(--white) !important;
+  font-weight: 700 !important;
+  border-radius: .8rem !important;
+  border-top-left-radius: 0 !important;
+  transition: all .4s;
+  text-transform: uppercase;
+  border: none;
+}
+
+.button2{
+  width: auto;
+  padding: .74rem 1.8rem;
+  background-color: transparent;
+  font-weight: 600 !important;
+  border-radius: .8rem !important;
+  border-top-left-radius: 0 !important;
+  border: 1px solid lightgray !important;
+  transition: all .4s;
+  border: none;
+}
+
+.button:hover{
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.button2:hover{
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.main{
+  min-height: 100vh;
+  margin-left: 270px;
+  /* padding-bottom: 1.5rem; */
+  transition: all .3s;
+  background: #EAF0FF;
+}
+
+.main-reverse{
+  margin-left: 70px;
+  padding-left: 5px;
+  transition: all .3s;
+}
+
+@media screen and (max-width:768px) {
+ .main{
+   margin-left: 0;
+ }
+ .main-reverse{
+   margin-left: 0 !important;
+   padding-left: 0 !important;
+ }
+}
+
+
+  
+
+  

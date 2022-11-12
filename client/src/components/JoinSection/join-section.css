@@ -1,0 +1,49 @@
+.join-container{
+    width: 100%;
+    margin: 5rem auto;
+    margin-bottom: .6rem;
+    height: 90vh;
+    padding: 1rem 0;
+}
+
+.join-card{
+    max-width: 80%;
+    background-color: #FBF6C7;
+    border-radius: 3.4rem;
+    border-top-left-radius: 0;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+    margin: auto;
+}
+
+.join-card span{
+    font-size: 2.6rem;
+    max-width: 65%;
+    font-weight: 900;
+    letter-spacing: .3px;
+    color: #25224A;
+}
+
+@media screen and (max-width:768px) {
+    .join-card{
+        max-width: 100%;
+        border-radius: 2.8rem;
+        border-top-left-radius: 0;
+    }
+    .join-container{
+        width: 90%;
+        margin: 3rem auto;
+        margin-bottom: .6rem;
+        height: 72vh;
+        padding: 1rem 0;
+    }
+    .join-card span{
+        font-size: 1.4rem;
+        max-width: 90%;
+        text-align: center;
+    }
+}

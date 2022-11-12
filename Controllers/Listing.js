@@ -70,6 +70,7 @@ const createListing = async(req,res)=>{
             }else{
                 companyLogo = req.body.companyLogo;
             }
+            console.log(companyLogo.length);
             const companyLogoLink = []
 
             for(let i=0; i<companyLogo.length; i++){
@@ -85,6 +86,7 @@ const createListing = async(req,res)=>{
         
                 }    
             req.body.companyLogo = companyLogoLink;
+            console.log(req.body.companyLogo);
         try {
         
             const result = await liContract.save();
@@ -218,6 +220,18 @@ const getAllListings = async(req,res)=>{
     }
 }
 
+// Get All Listings Admin 
+const getAllListingsAdmin = async(req,res)=>{
+    try {
+        const search = new SearchListing(listingModel.find({}), req.query).searchByTitle();
+        const listings = await search.query;
+        res.status(200).json(listings);
+        
+    } catch (error) {
+        res.status(500).json({message: error.message, success: false});
+    }
+}
+
 // Get Single Listing
 const getSingleListing = async(req,res)=>{
     const {listingId} = req.params;
@@ -242,4 +256,33 @@ const getListingsByUser = async(req,res)=>{
     }
 }
 
-module.exports = {createListing,getListingsByCategory,getAllListings,getSingleListing,getListingsByUser}
+// Delete Listing by id
+const deleteListing = async(req,res)=>{
+    const {listingId} = req.params;
+    try {
+        const listings = await listingModel.deleteOne({_id: listingId});
+        res.status(200).json({listings,success:true});
+        
+    } catch (error) {
+        res.status(500).json({message: error.message, success: false});
+    }
+}
+
+// Update Listing
+const updateListing = async(req,res)=>{
+    const {listingId} = req.params;
+    const {title,summary} = req.body.details;
+    const {askingPrice, specificPrice} = req.body.saleDetails;
+    try {
+        const listings = await listingModel.findByIdAndUpdate(listingId,{'details.title': title,'details.summary': summary, 'saleDetails.askingPrice': askingPrice, 'saleDetails.specificPrice': specificPrice},{
+            new: true,
+            useFindAndModify: false
+        })
+        res.status(200).json({listings,success:true});
+        
+    } catch (error) {
+        res.status(500).json({message: error.message, success: false});
+    }
+}
+
+module.exports = {createListing,getListingsByCategory,getAllListings,getSingleListing,getListingsByUser,deleteListing, getAllListingsAdmin, updateListing}

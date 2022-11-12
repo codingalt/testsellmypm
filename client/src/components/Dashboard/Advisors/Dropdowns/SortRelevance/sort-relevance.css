@@ -1,0 +1,47 @@
+.sort-rel{
+    width: 35rem;
+    min-height: 12rem;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    position: absolute;
+    top: 125%;
+    left: 0%;
+    z-index: 100;
+}
+
+.sort-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 23px;
+}
+
+.sort-items .s-item{
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.s-item input{
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.s-item span{
+    font-size: 1rem;
+    color: gray;
+}
+
+.sort-button{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.sort-button>button{
+    padding: 10px 26px;
+}

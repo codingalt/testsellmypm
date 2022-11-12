@@ -31,6 +31,10 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
     subscription: [{
       package: {
         type: String,
@@ -61,7 +65,6 @@ const userSchema = mongoose.Schema(
         type: String,
       }
     },
-    about: String,
     tokens: [
       {
         token: {
@@ -77,7 +80,6 @@ const userSchema = mongoose.Schema(
 //Password hashing
 
 userSchema.pre("save", async function (next) {
-  console.log("pre method");
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 12);
     this.confirmPass = await bcrypt.hash(this.confirmPass, 12);

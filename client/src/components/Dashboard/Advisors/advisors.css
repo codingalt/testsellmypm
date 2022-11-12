@@ -1,0 +1,350 @@
+.advisor-container{
+    width: 100%;
+    margin: 0rem auto;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 3rem 3rem;
+    border-top: 1px solid #eee;
+    min-height: 100vh;
+    height: 100vh;
+}
+
+.advisor-container .custom-select{
+    border: 1.9px dotted #a3a0aa;
+    border-radius: 6px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+    /* width: 12rem; */
+    padding: .4rem 1.8rem;
+    height: 3rem;
+    /* flex: 1; */
+    cursor: pointer;
+    position: relative;
+}
+
+.advisor-container .custom-select>div:nth-child(1){
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.custom-select span{
+    font-weight: 500;
+    color: #2a1f41;
+    font-size: .95rem;
+}
+
+.custom-select span svg{
+    font-weight: 900 !important;
+    color: #2a1f41 !important;
+    font-size: .9rem !important;
+}
+
+.filter-right .search-advisor{
+    height: 3.15rem !important;
+    border-radius: 11px;
+    border: 1.9px dotted #a3a0aa;
+}
+
+.filter-right .search-advisor input{
+    border-radius: 11px;
+}
+
+/* Advisor Card  */
+
+.advisor-card{
+    width: 100%;
+    border-radius: 7px;
+    border: 1.9px dotted #a3a0aa;
+    position: relative;
+    padding: 1.6rem 1.6rem;
+    transition: ease .4s;
+    margin-bottom: 1.8rem;
+}
+
+.advisor-card:hover{
+    transform: translateY(-8px);
+    transition: ease .4s;
+    background-color: #F5f5f5;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.175)!important;
+}
+
+.advisor-card .linkdin{
+    position: absolute;
+    right: 6%;
+    top: 7%;
+}
+
+.advisor-card .a-details{
+    display: flex;
+    gap: 1.4rem;
+    align-items: center;
+}
+
+.advisor-card .a-details .c-profile img{
+    width: 7.3rem;
+    height: 7.3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.a-details .info{
+    display: flex;
+    flex-direction: column;
+}
+
+.a-details .c-top{
+    display: flex;
+    gap: 1.7rem;
+    align-items: center;
+}
+
+.c-top .name{
+    font-size: 1.3rem;
+    color: #2a1f41;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.c-top .c-award{
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    background-color: #F2F2F5;
+    border-radius: 1rem;
+    padding: 3px 18px;
+}
+
+.c-award span:nth-child(2){
+    font-weight: 500;
+    font-size: .9rem;
+}
+
+.c-award svg{
+    color: #3E50F7;
+    font-size: .9rem;
+}
+
+.info .card-title{
+    font-size: 1.15rem;
+    max-width: 90%;
+    font-weight: 500;
+}
+
+.info .a-location{
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+}
+
+.a-location span svg{
+    font-size: 1.1rem;
+    color: #a3a0aa;
+}
+
+.a-location span:nth-child(2){
+    font-size: 1.01rem;
+    font-weight: 500;
+    color: #a3a0aa;
+}
+
+.expertise{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.expertise span:nth-child(1){
+    font-size: 1rem;
+    font-weight: 500;
+    color: #a3a0aa;
+}
+
+.expertise span:nth-child(2){
+    font-size: 1.07rem;
+    font-weight: 500;
+}
+
+.deal-info{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.deal-info .inner{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.deal-info .inner span:nth-child(1){
+    font-size: .95rem;
+    font-weight: 500;
+    color: #a3a0aa;
+}
+
+.deal-info .inner span:nth-child(2){
+    font-size: 1.04rem;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.card-footer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 1.9px dotted #a3a0aa;
+    padding-top: 1.2rem;
+}
+
+.card-footer .button{
+    border-radius: 13px !important;
+    border-top-left-radius: 0 !important;
+    background: transparent;
+    border: 2px solid var(--purple);
+    color: #555 !important;
+}
+
+.card-footer .button:hover{
+    background: var(--purple);
+    color: #fff !important;
+}
+
+.card-hr{
+    background-color: #D4D2D9;
+}
+
+@media screen and (max-width:1430px) {
+    .advisor-card .linkdin{
+        position: absolute;
+        right: 4%;
+        top: 36%;
+    }
+}
+
+@media screen and (max-width:1330px) {
+    .av-left{
+        position: relative;
+    }
+    .copy-profile-link{
+        position: absolute;
+        top: 90%;
+        margin-top: 3.3rem;
+    }
+}
+
+@media screen and (max-width:1240px) {
+   .advisor-container .advisor-row{
+        flex-direction: column;
+    }
+    .advisor-container .advisor-row .col-md-6{
+        flex: 0 0 100%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:1028px) {
+    .advisor-view-row{
+        flex-direction: column;
+    }
+    .advisor-view-row .av-left{
+        width: 100%;
+    }
+    .advisor-view-row .av-right{
+        margin-top: 2rem;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .advisor-container{
+        padding: 2.5rem 1.5rem;
+    }
+    .advisor-card .linkdin{
+        position: absolute;
+        right: 5%;
+        top: 6%;
+    }
+    .advisor-card .a-details .c-profile img{
+        width: 5.6rem;
+        height: 5.6rem;
+    }
+    .filter-advisor{
+        display: none;
+    }
+    .advisor-card .a-details{
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+        align-items: center;
+    }
+    .a-details .c-profile{
+        align-self: flex-start;
+    }
+
+    .c-top .name{
+        font-size: 1rem;
+    }
+    
+    .c-top .c-award{
+        display: flex;
+        gap: 7px;
+    }
+    
+    .c-award span:nth-child(2){
+        font-weight: 500;
+        font-size: .7rem;
+    }
+    
+    .c-award svg{
+        color: #3E50F7;
+        font-size: .7rem;
+    }
+    .info .card-title{
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .advisor-container .card-button{
+        padding: 13px 1.45rem;
+    }
+
+}
+
+@media screen and (max-width:510px) {
+    .copy-profile-link{
+       margin-top: 0;
+    }
+    .advisor-view-row .av-left{
+        padding: 0rem 1.8rem !important;
+    }
+    .advisor-view-row .av-left .a-details{
+        flex-direction: column;
+    }
+    .advisor-view-row .av-right{
+        margin-top: 2.6rem;
+        width: 100%;
+    }
+    .deal-info{
+        display: flex;
+       flex-direction: column;
+    }
+    .advisor-view{
+        padding: 1.5rem .5rem !important;
+    }
+    .av-deal-info{
+        width: 100% !important;
+        align-items: flex-start;
+    }
+    .advisor-view .a-details .c-profile img{
+        width: 6.6rem !important;
+        height: 6.6rem !important;
+    }
+}

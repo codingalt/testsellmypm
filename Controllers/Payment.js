@@ -10,10 +10,10 @@ const activateSubscription = async(req,res)=>{
     const {token,packageType} = req.body;
     let amount,numerOfDays;
     if(packageType === 'monthly'){
-        amount = 7.99;
+        amount = 10;
         numerOfDays = 30;
     }else{
-        amount = 79;
+        amount = 99;
         numerOfDays = 360;
     }
     try {
@@ -27,7 +27,7 @@ const activateSubscription = async(req,res)=>{
           const charge = await stripe.charges.create(
             {
               amount: amount * 100,
-              currency: "gbp",
+              currency: "usd",
               customer: customer.id,
               receipt_email: token.email,
             },

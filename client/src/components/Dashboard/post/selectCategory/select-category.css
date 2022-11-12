@@ -1,0 +1,86 @@
+.select-cat{
+    margin: 2rem auto;
+    width: 81%;
+}
+
+.select-cat .cat-box{
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+}
+
+.cat-box .title{
+    width: 100%;
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.cat-box .title span{
+    color: #555;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.cat-box .select-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 30px;
+}
+
+.select-box .form-group span{
+    margin-left: 10px;
+    font-size: 1.15rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.select-box .form-group input{
+    transform: scale(1.14);
+    margin-top: 6px;
+}
+
+.cat-box .select{
+    margin-left: 30px;
+}
+
+.select label{
+    margin-bottom: 10px;
+    margin-left: 2px;
+    font-weight: 500;
+    color: #555;
+}
+
+.cat-box select{
+    width: 65%;
+}
+
+.cat-box .cat-button{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 30px;
+    padding-bottom: 20px;
+}
+
+.cat-button .button{
+    padding: 10px 60px;
+    border-radius: 6px !important;
+}
+
+@media screen and (max-width:768px) {
+    .select-cat{
+        margin: 2rem auto;
+        width: 95%;
+    }
+    .cat-box .title span{
+        font-size: 1.3rem;
+    }
+    .cat-box select{
+        width: 85%;
+    }
+    .cat-button .button{
+        margin-top: 14px;
+    }
+}

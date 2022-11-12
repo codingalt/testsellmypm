@@ -1,0 +1,203 @@
+.seller-hero {
+  /* background-color: #c8f5bc; */
+  margin-top: 0;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+}
+
+.seller-hero .sh-left {
+  background-color: transparent;
+  position: relative !important;
+  width: 50%;
+  height: 100%;
+}
+
+.sh-right .section-title {
+  color: #25224a;
+  text-transform: none;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 0.45px;
+}
+
+.seller-hero .sh-left img:nth-child(1) {
+  position: absolute;
+  left: 9%;
+  top: 4%;
+}
+
+.seller-hero .sh-left img:nth-child(2) {
+  position: absolute;
+  right: -9%;
+  bottom: 0;
+  top: 80%;
+}
+
+@media screen and (max-width: 992px) {
+  .sh-sub-container {
+    max-width: 98%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sh-sub-container {
+    max-width: 95%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .sh-right .section-title {
+    font-size: 1.4rem !important;
+  }
+  .sh-descript span {
+    font-size: 1rem !important;
+  }
+  .seller-hero .sh-left img:nth-child(2) {
+    display: none;
+  }
+  .seller-hero .sh-left img:nth-child(1) {
+    transform: scale(.9) !important;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .seller-hero .sh-left img:nth-child(1) {
+    position: absolute;
+    left: 9%;
+    top: 4%;
+    transform: scale(0.7);
+  }
+  .seller-hero .sh-left img:nth-child(2) {
+    position: absolute;
+    right: -9%;
+    bottom: 0;
+    top: 80%;
+    transform: scale(0.7);
+  }
+  .sh-right .section-title {
+    font-size: 2.1rem;
+  }
+}
+
+@media screen and (max-width:768px) {
+    .seller-hero {
+        background-color: #c8f5bc;
+        margin-top: 0;
+        padding-top: 6rem;
+        min-height: 114vh;
+        align-items: flex-start;
+      }
+      .sh-right .section-title {
+        font-size: 1.8rem !important;
+      }
+      .section-header .sh-title{
+        margin-top: 5px !important;
+      }
+      .section-header .sh_descript span{
+        font-weight: 600 !important;
+        font-size: 1.1rem !important;
+      }
+      .sh-descript span {
+        font-size: 1.4rem !important;
+      }
+      .sh-sub-container {
+        max-width: 95%;
+      }
+
+      .sh-left{
+        width: 100% !important;
+      }
+      .seller-hero .sh-left img:nth-child(1) {
+        position: absolute;
+        left: 2%;
+        top: -38%;
+        transform: scale(.8) !important;
+      }
+      
+      .seller-hero .sh-left img:nth-child(2) {
+        position: absolute;
+        right: 2%;
+        bottom: 0;
+        top: 20%;
+        display: block;
+        transform: scale(.8);
+      }
+}
+
+@media screen and (max-width:558px) {
+    .seller-hero .sh-left img:nth-child(1) {
+        position: absolute;
+        left: -3%;
+        top: -38%;
+        transform: scale(.7) !important;
+      }
+      
+      .seller-hero .sh-left img:nth-child(2) {
+        position: absolute;
+        right: -8%;
+        bottom: 0;
+        top: 20%;
+        display: block;
+        transform: scale(.7);
+      }
+}
+
+@media screen and (max-width:450px) {
+    .seller-hero .sh-left img:nth-child(1) {
+        position: absolute;
+        left: -9%;
+        top: -25%;
+        transform: scale(.57) !important;
+      }
+      
+      .seller-hero .sh-left img:nth-child(2) {
+        position: absolute;
+        right: -14%;
+        bottom: 0;
+        top: 8%;
+        display: block;
+        transform: scale(.57);
+      }
+      .sh-right .section-title {
+        font-size: 1.5rem !important;
+      }
+      .section-header .sh-title{
+        margin-top: 5px !important;
+      }
+      .section-header .sh_descript span{
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+      }
+      .sh-descript span {
+        font-size: 1.2rem !important;
+      }
+      .seller-hero{
+        min-height: 106vh;
+      }
+      .sh-left{
+        min-height: 18rem !important;
+        background-color: antiquewhite;
+      }
+}
+
+@media screen and (max-width:392px) {
+    .seller-hero{
+        min-height: 100%;
+      }
+    .seller-hero .sh-left img:nth-child(1) {
+        position: absolute;
+        left: -11%;
+        top: -25%;
+        transform: scale(.5) !important;
+      }
+      
+      .seller-hero .sh-left img:nth-child(2) {
+        position: absolute;
+        right: -14%;
+        bottom: 0;
+        top: -10%;
+        display: block;
+        transform: scale(.5);
+      }
+}

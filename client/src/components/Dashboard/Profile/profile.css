@@ -1,0 +1,84 @@
+.profile{
+    width: 84%;
+    height: 100%;
+    margin: 2rem auto;
+}
+
+.profile .profile-img{
+    width: 100%;
+    margin: 1rem 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.profile-img .name{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile .detail-title{
+    width: 100%;
+    padding: 1rem 1rem;
+}
+
+.detail-title span{
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.profile-img .name span:nth-child(1){
+    font-size: 1.3rem;
+    color: #3966CE;
+    font-weight: 700;
+}
+
+.profile-img .p-img{  
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border: 4px solid var(--purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-img img{
+    width: 100%;
+    transform: scale(.9);
+}
+
+.detail-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 14px;
+    padding-top: 10px;
+}
+
+.detail-row .key span{
+    font-size: 1.06rem;
+    font-weight: 500;
+}
+
+.detail-row .value span{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.profile .card{
+    border-radius: 15px;
+}
+
+@media screen and (max-width:768px) {
+    .profile{
+        width: 94%;
+    }
+    .profile-img .p-img{  
+        width: 6rem;
+        height: 5.2rem;
+    }
+}

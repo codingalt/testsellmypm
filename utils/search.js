@@ -12,7 +12,28 @@ class SearchListing{
             },
         } : {};
 
-        console.log(keyword);
+        this.query = this.query.find({...keyword})
+        return this;
+    }
+
+    searchByTitle(){
+        const keyword = this.queryStr.keyword ? {
+            "details.title": {
+                $regex: this.queryStr.keyword,
+                $options: "i",
+            },
+        } : {};
+        this.query = this.query.find({...keyword})
+        return this;
+    }
+
+    searchAdvisors(){
+        const keyword = this.queryStr.keyword ? {
+            "name": {
+                $regex: this.queryStr.keyword,
+                $options: "i",
+            },
+        } : {};
         this.query = this.query.find({...keyword})
         return this;
     }

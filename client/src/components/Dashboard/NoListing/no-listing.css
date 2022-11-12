@@ -1,0 +1,48 @@
+.no-listing{
+    width: 85%;
+    margin: 2rem auto;
+}
+
+.no-listing .inner-box{
+    width: 100%;
+    background: #FBF6C7;
+    padding: 2.8rem;
+    padding-top: 2.4rem;
+    border-radius: 60px;
+    border-top-left-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+}
+
+.inner-box .icon svg{
+    font-size: 4rem;
+    color: #34306C;
+}
+
+.inner-box .title span{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.inner-box .descipt span{
+    font-size: 1.1rem;  
+}
+
+.inner-box .button{
+    border-radius: 8px !important;
+}
+
+@media screen and (max-width:768px) {
+    .no-listing{
+        width: 96%;
+        margin: 2rem auto;
+    }
+    .inner-box .button{
+        margin-top: 10px;
+    }
+}
+

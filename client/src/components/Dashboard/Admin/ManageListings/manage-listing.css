@@ -1,0 +1,62 @@
+.search-all-listing{
+    width: 86%;
+    margin: 1rem auto;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap:1rem;
+}
+
+.search-all-listing input{
+    width: 45%;
+    height: 3.1rem;
+    border: none;
+    outline: none;
+    padding-left: 1rem;
+    border-radius: 8px;
+}
+
+.search-all-listing button{
+    width: 10rem;
+}
+
+.action-div{
+    display: flex;
+    gap: 10px;
+}
+
+.action-div .del-icon{
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7cbcf;
+}
+
+.action-div .view-icon-container,.edit-icon{
+    padding: 4px 11px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d4edda;
+    font-size: .9rem;
+}
+
+.edit-icon{
+    font-weight: 500;
+    color: #2F59CA;
+    background-color: #d1ecf1;
+}
+
+.action-div .view-icon{
+    font-size: 1.2rem;
+    color: #555 !important;
+}
+
+.action-div .delete{
+    font-size: 1.5rem;
+}
