@@ -9,7 +9,6 @@
   "main": "app.js",
   "scripts": {
     "start": "node index.js",
-    "build": "ng build", 
     "heroku-postbuild": "ng build --prod"
   },
   "keywords": [],
