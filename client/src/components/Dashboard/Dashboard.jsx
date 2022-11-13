@@ -13,6 +13,7 @@ const Dashboard = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [active, setActive] = useState(true);
   const [loader, setLoader] = useState(null);
+  const navigate = useNavigate();
   const toggleSidebar = () => {
     setActive(!active);
   };
