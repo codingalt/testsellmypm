@@ -16,18 +16,6 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cookieParser())
 app.use(cors());
 
-
-const __dirname1 = path.resolve();
-
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-    app.use(express.static(path.resolve(__dirname, 'client', 'build')))
-    app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-   }
-
-// app.use("/uploads", express.static("./uploads"));
-
 // Linking Router 
 app.use(require('./Routes/UserRoute'));
 app.use(require('./Routes/categoryRoute'));
@@ -39,49 +27,17 @@ app.use(require('./Routes/ApprovedRequestsRoute'));
 app.use(require('./Routes/PaymentRoute'));
 app.use(require('./Routes/AdvisorRoute'));
 
+
+const __dirname1 = path.resolve();
+
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+    app.use(express.static(path.resolve(__dirname, 'client', 'build')))
+    app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+   }
+
+
 app.listen(PORT,()=>{
     console.log(`Listeninig to the port ${PORT}`);
 });
-
-// const socketPort = process.env.SOCKET_PORT || 8800;
-
-// // socket io code 
-// const io = require('socket.io')(socketPort, {
-//     cors: {
-//         origin: 'http://localhost:3000'
-//     }
-// });
-
-// let activeUsers = []
-
-// io.on('connection', (socket)=>{
-//     // add new user 
-//     socket.on('new-user-add', (newUserId)=>{
-//         // if user is not added previously        
-//         if(!activeUsers.some((user)=> user.userId === newUserId))
-//         {
-//             activeUsers.push({
-//                 userId: newUserId,
-//                 socketId: socket.id
-//             })
-//         }
-    
-
-//         // console.log('Connected Users', activeUsers);
-//         io.emit('get-users', activeUsers)
-//     })
-
-//     // Send Message
-//     socket.on('send-message', (data)=>{
-//         const {receiverId} = data;
-//         const user = activeUsers.find((user)=> user.userId === receiverId);
-//         if(user){
-//             io.to(user.socketId).emit('receive-message', data)
-//         }
-//     })
-
-//     socket.on('disconnect', ()=>{
-//         activeUsers = activeUsers.filter((user)=> user.socketId !== socket.id)
-//         io.emit('get-users', activeUsers)
-//     })
-// })
