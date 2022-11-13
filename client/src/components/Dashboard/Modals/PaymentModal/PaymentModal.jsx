@@ -14,7 +14,7 @@ import MainContext from "../../../Context/MainContext";
 const PaymentModal = (props) => {
   const [packageType, setPackageType] = useState("monthly");
   const [pkgText, setPkgText] = useState("Monthly");
-  const [pkgValue, setPkgValue] = useState(7.99);
+  const [pkgValue, setPkgValue] = useState(10);
   const [loader, setLoader] = useState(false);
   const { isAuthenticated } = useContext(MainContext);
   const navigate = useNavigate();

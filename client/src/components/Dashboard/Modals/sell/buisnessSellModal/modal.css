@@ -338,13 +338,25 @@
         margin-top: 5rem;
     }
     .modal-content{
-        width: 95vw;
+        width: 95vw !important;
     }
     .property-manager-details{
-        margin-top: 21rem;
+        margin-top: 5rem;
     }
     .left .inner .socials{
        flex-wrap: wrap;
+    }
+    .basic-details{
+        max-width: 100%;
+        padding-left: 2rem;
+    }
+    .memo-container .location {
+        display: flex;
+        gap: 1rem;
+        margin-top: 10px;
+        align-items: center;
+        align-items: flex-start;
+        flex-direction: column;
     }
 }
 

@@ -14,7 +14,7 @@
     color: #555;
 }
 
-.navbar .dashboard-mob-item{
+.navbar .dashboard-mob-menu{
     display: none;
 }
 
@@ -206,7 +206,7 @@ ul li:hover{
         font-size: 1.4rem;
     }
 
-    .navbar .dashboard-mob-item{
+    .navbar .dashboard-mob-menu{
         display: inline-block;
     }
 

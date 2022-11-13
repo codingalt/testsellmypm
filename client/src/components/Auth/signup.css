@@ -99,6 +99,10 @@
     border-bottom-right-radius: 15px;
 }
 
+.login-logo{
+    display: none;
+}
+
 @media screen and (max-width:992px){
     .signup-wrapper{
         width: 90%;
@@ -109,6 +113,19 @@
     .main-container{
         align-items: flex-start !important;
         justify-content: flex-start;
+    }
+    .login-logo{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        left: 50%;
+        top: 7%;
+        transform: translate(-50%,0%);
+    }
+    
+    .login-logo img{
+        width: 80%;
     }
     .signup-wrapper{
         width: 100%;
@@ -128,7 +145,7 @@
     }
 
     .form-section{
-        margin-top: -100px;
+        margin-top: 0px;
     }
 
     .signup-wrapper form{

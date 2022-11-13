@@ -15,16 +15,16 @@ const Menu = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
-  const {memberShipScrollHandle} = useContext(MainContext);
+  const { memberShipScrollHandle } = useContext(MainContext);
 
-  const handleAuthenticate = ()=>{
-    if(isAuthenticated){
-      navigate('/dashboard')
+  const handleAuthenticate = () => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
       return;
-    }else{
-      navigate('/login');
-    } 
-  }
+    } else {
+      navigate("/login");
+    }
+  };
 
   const Authenticate = async () => {
     try {
@@ -88,10 +88,10 @@ const Menu = () => {
         </div>
         <div className={toggle ? "navbar-toggle nav-items" : "nav-items"}>
           <ul className="ul">
-          <NavLink to={"/dashboard"} className='dashboard-mob-item'>
+            <NavLink to={"/dashboard"} className="dashboard-mob-item">
               <li>Dashboard</li>
             </NavLink>
-          <NavLink to={"/sellers"}>
+            <NavLink to={"/sellers"}>
               <li>Sellers</li>
             </NavLink>
             <NavLink to={"/buyers"}>
@@ -143,7 +143,7 @@ const Menu = () => {
                                 to={"/listing/" + item._id}
                               >
                                 <li key={item._id}>
-                                <div className="sub-menu-icon">
+                                  <div className="sub-menu-icon">
                                     {sellImages[i].path}
                                   </div>
                                   <a href="#">{item.name}</a>
@@ -157,32 +157,34 @@ const Menu = () => {
                 </div>
               </div>
             </li>
-            
+
             <a href="mailto:support@sellmypm.com">
-              <li>Company <bs.BsChevronDown style={{fontSize:'.91rem'}} /></li>
-            </a>
-            {/* <NavLink to={isAuthenticated ? "/dashboard" : "/listing/post"}>
-              <li>{isAuthenticated ? 'Dashboard' : 'Post Listings'}</li>
-            </NavLink>
-            <NavLink to={isAuthenticated ? "/listing/post" : "/login"}>
               <li>
-                <button className="btn download mobile-login">
-                  {isAuthenticated ? "Post Listings" : "Login Here"}
-                </button>
+                Company
               </li>
-            </NavLink> */}
+            </a>
+
+            {isAuthenticated ? (
+              <NavLink className="dashboard-mob-menu" to={"/dashboard"}>
+                <li>Dashboard</li>
+              </NavLink>
+            ) : (
+              <NavLink className="dashboard-mob-menu" to={"/login"}>
+                <li>Login</li>
+              </NavLink>
+            )}
           </ul>
         </div>
         {/* Right Side  */}
         <div className="right">
-          {/* <div className="nav-search">
-            <input type="text" placeholder="Search.." />
-            <bs.BsSearch className="icon" />
-          </div> */}
           <div className="menu_right">
-            <a to={''} onClick={handleAuthenticate}>Login</a>
-            <NavLink to={'/signup'}>
-            <button className="button2">Join Now <bs.BsArrowRight /></button>
+            <a to={""} onClick={handleAuthenticate}>
+              Login
+            </a>
+            <NavLink to={"/signup"}>
+              <button className="button2">
+                Join Now <bs.BsArrowRight />
+              </button>
             </NavLink>
           </div>
           <div className="toggle" onClick={toggleNavbar}>

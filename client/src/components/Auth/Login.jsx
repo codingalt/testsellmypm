@@ -5,9 +5,10 @@ import { TailSpin } from "react-loader-spinner";
 import { useContext } from "react";
 import MainContext from "../Context/MainContext";
 import API from "../axios";
+import logo from '../../images/final.png'
 
 const Login = () => {
-  const {isAuthenticated} = useContext(MainContext);
+  const { isAuthenticated } = useContext(MainContext);
   const [errorMsg, setErrorMsg] = useState("");
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -27,10 +28,10 @@ const Login = () => {
 
   const postData = async (e) => {
     e.preventDefault();
-    
-    const {email, password} = user;
-   
-      setLoader(true);
+
+    const { email, password } = user;
+
+    setLoader(true);
     const res = await fetch(`/login`, {
       method: "POST",
       headers: {
@@ -75,6 +76,9 @@ const Login = () => {
               alignItems: "center",
             }}
           >
+            <div className="login-logo">
+              <img src={logo} alt="" />
+            </div>
             <div className="col-md-6 form-section">
               <form>
                 <div className="welcome-txt text-center mb-4">

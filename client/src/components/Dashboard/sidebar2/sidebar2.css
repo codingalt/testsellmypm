@@ -189,6 +189,7 @@ a{
         left: -100%;
         transition: all .3s;
         top: 9%;
+        padding-top: 1rem;
     }
     .activeSidebar2{
         width: 95px;

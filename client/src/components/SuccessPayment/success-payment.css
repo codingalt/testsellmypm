@@ -53,5 +53,33 @@
 
 .success-pay .bottom button{
     width: 16rem;
-    margin: 0 auto;
+    margin: 10px auto;
+}
+
+@media screen and (max-width:768px) {
+    .success-pay{
+        margin: 8rem auto;
+    }
+    .top span:nth-child(1){
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background-color: #5cb85c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .top span svg{
+        font-size: 2.4rem;
+        color: #fff;
+    }
+    .success-pay .bottom span{
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #5cb85c;
+        max-width: 87%;
+        margin: auto;
+    }
 }
