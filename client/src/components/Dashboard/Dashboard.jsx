@@ -10,7 +10,7 @@ import { TailSpin } from "react-loader-spinner";
 import MainContext from "../Context/MainContext";
 
 const Dashboard = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [active, setActive] = useState(true);
   const [loader, setLoader] = useState(null);
   const toggleSidebar = () => {
@@ -29,13 +29,12 @@ const Dashboard = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if(!data.success){
+      if (!data.success) {
         setIsAuthenticated(false);
-        navigate('/login')
+        navigate("/login");
       }
-      setIsAuthenticated(true)
+      setIsAuthenticated(true);
       setLoader(false);
-   
     } catch (error) {
       console.log(error);
       navigate("/login");
@@ -47,34 +46,25 @@ const Dashboard = () => {
     Authenticate();
   }, []);
 
- 
   return (
     <>
-    {
-      <sidebarContext.Provider
-      value={{ isOpen: active, toggle: toggleSidebar }}
-    >
-      {/* Sidebar */}
-      {<Sidebar />}
+      {
+        <sidebarContext.Provider
+          value={{ isOpen: active, toggle: toggleSidebar }}
+        >
+          {isAuthenticated && (
+            <>
+              <Sidebar />
 
-      {/* Main Content */}
-      <main className={active ? "main" : "main main-reverse"}>
-     
-        {/* Navbar */}
-        <Navbar />
-
-        {/* Cards  */}
-        {
-          <>
-          <Cards />
-        </>
-        }
-    
-      </main>
-      
-    </sidebarContext.Provider>
-    }
-
+              {/* Main Content */}
+              <main className={active ? "main" : "main main-reverse"}>
+                <Navbar />
+                <Cards />
+              </main>
+            </>
+          )}
+        </sidebarContext.Provider>
+      }
     </>
   );
 };

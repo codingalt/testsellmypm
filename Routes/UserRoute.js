@@ -11,6 +11,5 @@ router.get('/user/:userId',getUserData);
 router.get('/auth', Authenticate, (req,res)=>{
     res.send(req.rootUser);
 });
-// router.get('/',Home);
 
 module.exports = router;
