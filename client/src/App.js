@@ -89,9 +89,9 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   Authenticate();
-  // }, []);
+  useEffect(() => {
+    Authenticate();
+  }, []);
 
   return (
     <MainContext.Provider

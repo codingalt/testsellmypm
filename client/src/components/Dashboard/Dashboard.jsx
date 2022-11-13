@@ -10,12 +10,42 @@ import { TailSpin } from "react-loader-spinner";
 import MainContext from "../Context/MainContext";
 
 const Dashboard = () => {
-  const {isAuthenticated} = useContext(MainContext); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);  
   const [active, setActive] = useState(true);
   const [loader, setLoader] = useState(null);
   const toggleSidebar = () => {
     setActive(!active);
   };
+
+  const Authenticate = async () => {
+    setLoader(true);
+    try {
+      const res = await fetch(`/auth`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      if(!data.success){
+        setIsAuthenticated(false);
+        navigate('/login')
+      }
+      setIsAuthenticated(true)
+      setLoader(false);
+   
+    } catch (error) {
+      console.log(error);
+      navigate("/login");
+      setIsAuthenticated(false);
+    }
+  };
+
+  useEffect(() => {
+    Authenticate();
+  }, []);
 
  
   return (
@@ -35,7 +65,6 @@ const Dashboard = () => {
 
         {/* Cards  */}
         {
-          isAuthenticated && 
           <>
           <Cards />
         </>
