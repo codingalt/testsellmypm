@@ -16,9 +16,6 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cookieParser())
 app.use(cors());
 
-app.get('/',(req,res)=>{
-    res.json("Server started");
-})
 
 const __dirname1 = path.resolve();
 
