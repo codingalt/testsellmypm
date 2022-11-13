@@ -89,11 +89,9 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    Authenticate();
-  }, []);
-
-  console.log(`${process.env.REACT_APP_URI}/auth`);
+  // useEffect(() => {
+  //   Authenticate();
+  // }, []);
 
   return (
     <MainContext.Provider

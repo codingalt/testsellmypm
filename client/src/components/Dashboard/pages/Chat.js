@@ -46,9 +46,9 @@ const ChatPage = () => {
     }
   };
 
-  useEffect(() => {
-    Authenticate();
-  }, []);
+  // useEffect(() => {
+  //   Authenticate();
+  // }, []);
 
   useEffect(() => {
     function handleResize() {

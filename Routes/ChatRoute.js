@@ -5,7 +5,7 @@ const Authenticate = require('../authenticate/authenticate')
 const router = express.Router();
 
 router.post('/chat/', createChat);
-router.get('/chat/',Authenticate,userChats);
-router.get('/chat/find/:firstId/:secondId',Authenticate,findChat);
+router.get('/chat/',userChats);
+router.get('/chat/find/:firstId/:secondId',findChat);
 
 module.exports = router;
