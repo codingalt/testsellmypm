@@ -12,8 +12,8 @@ const BuyerRequests = () => {
   const [buyerRequest, setBuyerRequest] = useState([]);
   const [loader, setLoader] = useState(true);
   const [modalShow, setModalShow] = useState(false);
-  const [clickedItem,setClickedItem] = useState([]);
-  const {approvedItem} = useContext(sidebarContext)
+  const [clickedItem, setClickedItem] = useState([]);
+  const { approvedItem } = useContext(sidebarContext);
 
   // Pagination
   const itemsPerPage = 8;
@@ -57,7 +57,6 @@ const BuyerRequests = () => {
 
   return (
     <div className="buyer-request">
-      
       {buyerRequest.length === 0 && !loader && <NoBuyerRequest />}
       <TailSpin
         height="60"
@@ -98,40 +97,63 @@ const BuyerRequests = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {slicedData?.slice(0).reverse().map((item, i) => {
-                      return (
-                        <tr key={item._id}>
-                          <td>{i + 1}</td>
-                          <td>
-                            <img
-                              src={item.listing[0]?.images[0]?.url}
-                              style={{
-                                width: "44px",
-                                height: "40px",
-                                borderRadius: "11px",
-                              }}
-                              alt=""
-                            />
-                          </td>
-                          <td>{item.listing[0]?.details?.title.slice(0, 40)}...</td>
-                          <td>{item.fromUserName}</td>
-                          <td>
-                            <span className={item.status === "Pending" ? "pending" : "status"}>{item.status}</span>
-                          </td>
-                          <td>
-                            <NavLink onClick={() => {setModalShow(true); setClickedItem(item)}} to={`#`}>
-                              Approve
-                            </NavLink>
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    {slicedData
+                      ?.slice(0)
+                      .reverse()
+                      .map((item, i) => {
+                        return (
+                          <tr key={item._id}>
+                            <td>{i + 1}</td>
+                            <td>
+                              <img
+                                src={item.listing[0]?.images[0]?.url}
+                                style={{
+                                  width: "44px",
+                                  height: "40px",
+                                  borderRadius: "11px",
+                                }}
+                                alt=""
+                              />
+                            </td>
+                            <td>
+                              {item.listing[0]?.details?.title.slice(0, 40)}...
+                            </td>
+                            <td>{item.fromUserName}</td>
+                            <td>
+                              <span
+                                className={
+                                  item.status === "Pending"
+                                    ? "pending"
+                                    : "status"
+                                }
+                              >
+                                {item.status}
+                              </span>
+                            </td>
+                            <td>
+                              <NavLink
+                                onClick={() => {
+                                  setModalShow(true);
+                                  setClickedItem(item);
+                                }}
+                                to={`#`}
+                              >
+                                Approve
+                              </NavLink>
+                            </td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
               )}
             </div>
           </div>
-          <ListingContractModal buyerrequest={clickedItem} show={modalShow} onHide={() => setModalShow(false)} />
+          <ListingContractModal
+            buyerrequest={clickedItem}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
           <Pagination pageCount={pageCount} changePage={changePage} />
         </div>
       )}

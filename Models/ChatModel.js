@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const chatSchema = mongoose.Schema(
   {
-   members: {
-    type: Array,
-   },
-   lastMessage: String,
-   senderName: String,
-   receiverName: String
+    members: {
+      type: Array,
+    },
+    lastMessage: String,
+    senderName: String,
+    receiverName: String,
   },
   { timestamps: true }
 );

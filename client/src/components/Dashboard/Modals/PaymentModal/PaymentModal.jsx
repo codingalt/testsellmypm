@@ -59,7 +59,7 @@ const PaymentModal = (props) => {
 
   const handleToken = async (token) => {
     props.onHide();
-    setLoader(true)
+    setLoader(true);
     try {
       const res = await axios.post(`/payment`, {
         token: token.id,
@@ -71,12 +71,11 @@ const PaymentModal = (props) => {
           true,
           "Congrats! Your Premium Subscription Activated Successfully"
         );
-        setLoader(false)
+        setLoader(false);
         navigate("/success");
-
       } else {
         toastHandle(false, "Payment Unsuccessfull! Please Try again");
-        setLoader(false)
+        setLoader(false);
       }
     } catch (error) {
       console.log(error);

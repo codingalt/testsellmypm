@@ -10,17 +10,17 @@ import Sidebar2 from "../sidebar2/Sidebar2";
 import AdvisorView from "../Advisors/AdvisorView";
 
 const AdvisorViewPage = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
   const [loader, setLoader] = useState(null);
-  const [activeSidebar, setActiveSidebar] = useState('activeSidebar2')
-  const sidebarRef = useRef();  
+  const [activeSidebar, setActiveSidebar] = useState("activeSidebar2");
+  const sidebarRef = useRef();
   const toggleSidebar = () => {
     setActive(!active);
-    setActiveSidebar("activeSidebar3")
+    setActiveSidebar("activeSidebar3");
   };
-  
+
   const Authenticate = async () => {
     setLoader(true);
     try {
@@ -33,13 +33,12 @@ const AdvisorViewPage = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if(!data.success){
+      if (!data.success) {
         setIsAuthenticated(false);
-        navigate('/login')
+        navigate("/login");
       }
-      setIsAuthenticated(true)
+      setIsAuthenticated(true);
       setLoader(false);
-   
     } catch (error) {
       console.log(error);
       navigate("/login");
@@ -53,38 +52,38 @@ const AdvisorViewPage = () => {
 
   useEffect(() => {
     function handleResize() {
-      if(window.innerWidth <768){
-        setActiveSidebar("")
-      }else if(window.innerWidth >768){
-        setActiveSidebar("activeSidebar2")
+      if (window.innerWidth < 768) {
+        setActiveSidebar("");
+      } else if (window.innerWidth > 768) {
+        setActiveSidebar("activeSidebar2");
       }
-}
-
-    window.addEventListener('resize', handleResize)
-  },[])
-
- 
-  return (
-    <>
-    { 
-      <sidebarContext.Provider
-      value={{ isOpen: active, toggle: toggleSidebar,sidebarRef,activeSidebar }}
-    >
-      {/* Sidebar */}
-      {<Sidebar2 />}
-
-      {/* Main Content */}
-      <main className={active ? "main" : "main main-reverse"}>
- 
-        <Navbar />
-
-        <AdvisorView />
-    
-      </main>
-      
-    </sidebarContext.Provider>
     }
 
+    window.addEventListener("resize", handleResize);
+  }, []);
+
+  return (
+    <>
+      {
+        <sidebarContext.Provider
+          value={{
+            isOpen: active,
+            toggle: toggleSidebar,
+            sidebarRef,
+            activeSidebar,
+          }}
+        >
+          {/* Sidebar */}
+          {<Sidebar2 />}
+
+          {/* Main Content */}
+          <main className={active ? "main" : "main main-reverse"}>
+            <Navbar />
+
+            <AdvisorView />
+          </main>
+        </sidebarContext.Provider>
+      }
     </>
   );
 };

@@ -159,9 +159,7 @@ const Menu = () => {
             </li>
 
             <a href="mailto:support@sellmypm.com">
-              <li>
-                Company
-              </li>
+              <li>Company</li>
             </a>
 
             {isAuthenticated ? (

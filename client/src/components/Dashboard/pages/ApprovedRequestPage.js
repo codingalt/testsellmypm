@@ -7,11 +7,11 @@ import BuyerRequests from "../BuyerRequests/BuyerRequests";
 import ApprovedListings from "../ApprovedListings/ApprovedListings";
 
 const ApprovedRequestPage = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
   const [active, setActive] = useState(true);
   const [loader, setLoader] = useState(null);
-  const sidebarRef = useRef();  
+  const sidebarRef = useRef();
   const toggleSidebar = () => {
     setActive(false);
   };
@@ -27,13 +27,12 @@ const ApprovedRequestPage = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if(!data.success){
+      if (!data.success) {
         setIsAuthenticated(false);
-        navigate('/login')
+        navigate("/login");
       }
-      setIsAuthenticated(true)
+      setIsAuthenticated(true);
       setLoader(false);
-   
     } catch (error) {
       console.log(error);
       navigate("/login");
@@ -56,30 +55,24 @@ const ApprovedRequestPage = () => {
       document.removeEventListener("mousedown", handler);
     };
   }, []);
- 
+
   return (
     <>
-    { 
-      <sidebarContext.Provider
-      value={{ isOpen: active, toggle: toggleSidebar,sidebarRef }}
-    >
-      {/* Sidebar */}
-      {<Sidebar />}
+      {
+        <sidebarContext.Provider
+          value={{ isOpen: active, toggle: toggleSidebar, sidebarRef }}
+        >
+          {/* Sidebar */}
+          {<Sidebar />}
 
-      {/* Main Content */}
-      <main className={active ? "main" : "main main-reverse"}>
-   
-        <Navbar />
+          {/* Main Content */}
+          <main className={active ? "main" : "main main-reverse"}>
+            <Navbar />
 
-        {
-            <ApprovedListings />
-        }
-    
-      </main>
-      
-    </sidebarContext.Provider>
-    }
-
+            {<ApprovedListings />}
+          </main>
+        </sidebarContext.Provider>
+      }
     </>
   );
 };

@@ -5,10 +5,9 @@ import { sidebarContext } from "../../contexts/SidebarContext";
 import { useNavigate } from "react-router-dom";
 import { TailSpin } from "react-loader-spinner";
 import ListingContract from "../../Forms/sell/ListingContract/ListingContract";
-import TestForm from "../../Forms/sell/ListingContract/TestForm";
 
 const ListingContractPage = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
   const [active, setActive] = useState(true);
   const [loader, setLoader] = useState(null);
@@ -27,13 +26,12 @@ const ListingContractPage = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if(!data.success){
+      if (!data.success) {
         setIsAuthenticated(false);
-        navigate('/login')
+        navigate("/login");
       }
-      setIsAuthenticated(true)
+      setIsAuthenticated(true);
       setLoader(false);
-   
     } catch (error) {
       console.log(error);
       navigate("/login");
@@ -44,42 +42,36 @@ const ListingContractPage = () => {
   useEffect(() => {
     Authenticate();
   }, []);
- 
+
   return (
     <>
-    { 
-      <sidebarContext.Provider
-      value={{ isOpen: active, toggle: toggleSidebar }}
-    >
-      {/* Sidebar */}
-      {<Sidebar />}
+      {
+        <sidebarContext.Provider
+          value={{ isOpen: active, toggle: toggleSidebar }}
+        >
+          {/* Sidebar */}
+          {<Sidebar />}
 
-      {/* Main Content */}
-      <main className={active ? "main" : "main main-reverse"}>
-      <TailSpin
-          height="60"
-          width="60"
-          color="#744BBE"
-          ariaLabel="tail-spin-loading"
-          radius="1"
-          wrapperStyle={{}}
-          wrapperClass="loader_wrapper2"
-          visible={loader}
-        />
-        {/* Navbar */}
-        <Navbar />
+          {/* Main Content */}
+          <main className={active ? "main" : "main main-reverse"}>
+            <TailSpin
+              height="60"
+              width="60"
+              color="#744BBE"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass="loader_wrapper2"
+              visible={loader}
+            />
+            {/* Navbar */}
+            <Navbar />
 
-        {/* Select Category  */}
-        {
-            isAuthenticated &&
-            <ListingContract />
-        }
-    
-      </main>
-      
-    </sidebarContext.Provider>
-    }
-
+            {/* Select Category  */}
+            {isAuthenticated && <ListingContract />}
+          </main>
+        </sidebarContext.Provider>
+      }
     </>
   );
 };

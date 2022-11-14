@@ -11,8 +11,8 @@ import { TailSpin } from "react-loader-spinner";
 
 const ManageListingPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const {isAdmin} = useContext(MainContext) 
-  const [listingId, setListingId] = useState('');
+  const { isAdmin } = useContext(MainContext);
+  const [listingId, setListingId] = useState("");
   const navigate = useNavigate();
   const [active, setActive] = useState(true);
   const [loader, setLoader] = useState(null);
@@ -41,7 +41,7 @@ const ManageListingPage = () => {
     }
   };
 
-  const deleteListing = async(item)=>{
+  const deleteListing = async (item) => {
     setLoader(true);
     try {
       const res = await fetch(`/listing/${item._id}`, {
@@ -49,30 +49,30 @@ const ManageListingPage = () => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-        }
+        },
       });
       const data = await res.json();
       if (data.success) {
-      toastHandle(true, "Listing Deleted Successfully");
-      setDeleted(true);
+        toastHandle(true, "Listing Deleted Successfully");
+        setDeleted(true);
       } else {
-        toastHandle(false, 'Something went wrong! Please try again.');
+        toastHandle(false, "Something went wrong! Please try again.");
       }
       setLoader(false);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  const handleListingId = ()=>{
+  const handleListingId = () => {
     // setListingId(props.listing._id)
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     handleListingId();
-  },[]);
+  }, []);
 
-  const sidebarRef = useRef();  
+  const sidebarRef = useRef();
   const toggleSidebar = () => {
     setActive(false);
   };
@@ -88,13 +88,12 @@ const ManageListingPage = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if(!data.success){
+      if (!data.success) {
         setIsAuthenticated(false);
-        navigate('/login')
+        navigate("/login");
       }
-      setIsAuthenticated(true)
+      setIsAuthenticated(true);
       setLoader(false);
-   
     } catch (error) {
       console.log(error);
       navigate("/login");
@@ -117,31 +116,32 @@ const ManageListingPage = () => {
       document.removeEventListener("mousedown", handler);
     };
   }, []);
- 
+
   return (
     <>
-    { 
-    isAdmin?
-      <sidebarContext.Provider
-      value={{ isOpen: active, toggle: toggleSidebar,sidebarRef,deleted:deleted,deleteListing }}
-    >
-      {/* Sidebar */}
-      {<Sidebar />}
+      {isAdmin ? (
+        <sidebarContext.Provider
+          value={{
+            isOpen: active,
+            toggle: toggleSidebar,
+            sidebarRef,
+            deleted: deleted,
+            deleteListing,
+          }}
+        >
+          {/* Sidebar */}
+          {<Sidebar />}
 
-      {/* Main Content */}
-      <main className={active ? "main" : "main main-reverse"}>
- 
-        <Navbar />
+          {/* Main Content */}
+          <main className={active ? "main" : "main main-reverse"}>
+            <Navbar />
 
-        {
-           <ManageListings />
-        }
-    
-      </main>
-      
-    </sidebarContext.Provider> : ''
-    }
-
+            {<ManageListings />}
+          </main>
+        </sidebarContext.Provider>
+      ) : (
+        ""
+      )}
     </>
   );
 };

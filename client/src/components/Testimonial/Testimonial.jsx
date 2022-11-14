@@ -24,7 +24,7 @@ const Testimonial = () => {
 
       <Swiper
         className="mySwiper testimonial-swiper"
-        style={{height:'auto'}}
+        style={{ height: "auto" }}
         effect={"fade"}
         modules={[Pagination, Autoplay]}
         pagination={{
@@ -58,13 +58,31 @@ const Testimonial = () => {
         <SwiperSlide>
           <div className="review-descript">
             <im.ImQuotesLeft />
-            <span><b style={{ color: "var(--purple2)" }}>Sell My PM</b> allows me to easily meet and connect with PMs looking to <b style={{ color: "var(--purple2)" }}>sell their business.</b> Through Sell My PM I have been able to identify PMs that fit perfectly within our <b style={{ color: "var(--purple2)" }}>portfolio.</b> I highly recommend Sell My PM to anyone looking to buy or sell a <b style={{ color: "var(--purple2)" }}>STR business.</b></span>
+            <span>
+              <b style={{ color: "var(--purple2)" }}>Sell My PM</b> allows me to
+              easily meet and connect with PMs looking to{" "}
+              <b style={{ color: "var(--purple2)" }}>sell their business.</b>{" "}
+              Through Sell My PM I have been able to identify PMs that fit
+              perfectly within our{" "}
+              <b style={{ color: "var(--purple2)" }}>portfolio.</b> I highly
+              recommend Sell My PM to anyone looking to buy or sell a{" "}
+              <b style={{ color: "var(--purple2)" }}>STR business.</b>
+            </span>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="review-descript">
             <im.ImQuotesLeft />
-            <span>We used <b style={{ color: "var(--purple2)" }}>Sell My PM to sell</b> our PM and the experience was excellent. They helped us get our listing together and when ready our <b style={{ color: "var(--purple2)" }}>calendar</b> was filled with buyer meetings. It’s an <b style={{ color: "var(--purple2)" }}>efficient process</b> that I highly recommend.</span>
+            <span>
+              We used{" "}
+              <b style={{ color: "var(--purple2)" }}>Sell My PM to sell</b> our
+              PM and the experience was excellent. They helped us get our
+              listing together and when ready our{" "}
+              <b style={{ color: "var(--purple2)" }}>calendar</b> was filled
+              with buyer meetings. It’s an{" "}
+              <b style={{ color: "var(--purple2)" }}>efficient process</b> that
+              I highly recommend.
+            </span>
           </div>
         </SwiperSlide>
       </Swiper>

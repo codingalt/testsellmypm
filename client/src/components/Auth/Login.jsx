@@ -5,7 +5,7 @@ import { TailSpin } from "react-loader-spinner";
 import { useContext } from "react";
 import MainContext from "../Context/MainContext";
 import API from "../axios";
-import logo from '../../images/final.png'
+import logo from "../../images/final.png";
 
 const Login = () => {
   const { isAuthenticated } = useContext(MainContext);
@@ -57,8 +57,8 @@ const Login = () => {
     <div>
       <div className="main-container">
         <TailSpin
-          height="110"
-          width="110"
+          height="60"
+          width="60"
           color="#744BBE"
           ariaLabel="tail-spin-loading"
           radius="1"

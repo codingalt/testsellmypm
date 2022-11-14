@@ -144,11 +144,11 @@ const BuisnessSellModal = (props) => {
             </div>
 
             <div className="managment-summary row flex-md-nowrap">
-            <div className="left col-md-6">
-              <div className="heading">
-              <span>Property Under Management Summary</span>
+              <div className="left col-md-6">
+                <div className="heading">
+                  <span>Property Under Management Summary</span>
                 </div>
-              <Table striped bordered hover>
+                <Table striped bordered hover>
                   <thead>
                     <tr>
                       <th>Area</th>
@@ -208,12 +208,11 @@ const BuisnessSellModal = (props) => {
                   </tbody>
                 </Table>
               </div>
-              
             </div>
 
             <div className="managment-summary row flex-md-nowrap">
-            <div className="left col-md-6 left2">
-              <Table striped bordered hover>
+              <div className="left col-md-6 left2">
+                <Table striped bordered hover>
                   <thead>
                     <tr>
                       <th></th>
@@ -277,7 +276,6 @@ const BuisnessSellModal = (props) => {
                 </Table>
               </div>
               <div className="right col-md-6">
-                
                 <Table bordered>
                   <thead>
                     <tr>
@@ -325,21 +323,22 @@ const BuisnessSellModal = (props) => {
                   </tbody>
                 </Table>
               </div>
-              
             </div>
 
             <div className="buisness-detail">
               <h3 className="mb-3">What we’ve done</h3>
-              <p>This is an initial look at the business to help you understand the way it operates and 
-some of it’s key metrics. As a potential acquirer, this will help you to decide where to 
-focus your due diligence.
-This is a summary, based on what we have been told. The questions asked have been 
-kept deliberately loose in structure as no company has the same model.
-This does not replace the necessary due diligence that you need to perform to verify 
-that the information provided here is accurate and correct</p>
+              <p>
+                This is an initial look at the business to help you understand
+                the way it operates and some of it’s key metrics. As a potential
+                acquirer, this will help you to decide where to focus your due
+                diligence. This is a summary, based on what we have been told.
+                The questions asked have been kept deliberately loose in
+                structure as no company has the same model. This does not
+                replace the necessary due diligence that you need to perform to
+                verify that the information provided here is accurate and
+                correct
+              </p>
             </div>
-
-
           </div>
         </Modal.Body>
         <Modal.Footer>

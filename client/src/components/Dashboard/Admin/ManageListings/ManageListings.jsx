@@ -67,7 +67,6 @@ const ManageListings = () => {
         },
       });
       const data = await res.json();
-      console.log(data);
       setAllListings(data);
       setLoader(false);
     } catch (error) {

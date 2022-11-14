@@ -8,11 +8,11 @@ import MainContext from "../../Context/MainContext";
 import MyListings from "../MyListings/MyListings";
 
 const MyListingPage = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
   const [active, setActive] = useState(true);
   const [loader, setLoader] = useState(null);
-  const sidebarRef = useRef();  
+  const sidebarRef = useRef();
   const toggleSidebar = () => {
     setActive(false);
   };
@@ -28,13 +28,12 @@ const MyListingPage = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if(!data.success){
+      if (!data.success) {
         setIsAuthenticated(false);
-        navigate('/login')
+        navigate("/login");
       }
-      setIsAuthenticated(true)
+      setIsAuthenticated(true);
       setLoader(false);
-   
     } catch (error) {
       console.log(error);
       navigate("/login");
@@ -57,30 +56,24 @@ const MyListingPage = () => {
       document.removeEventListener("mousedown", handler);
     };
   }, []);
- 
+
   return (
     <>
-    { 
-      <sidebarContext.Provider
-      value={{ isOpen: active, toggle: toggleSidebar,sidebarRef }}
-    >
-      {/* Sidebar */}
-      {<Sidebar />}
+      {
+        <sidebarContext.Provider
+          value={{ isOpen: active, toggle: toggleSidebar, sidebarRef }}
+        >
+          {/* Sidebar */}
+          {<Sidebar />}
 
-      {/* Main Content */}
-      <main className={active ? "main" : "main main-reverse"}>
- 
-        <Navbar />
+          {/* Main Content */}
+          <main className={active ? "main" : "main main-reverse"}>
+            <Navbar />
 
-        {
-            <MyListings />
-        }
-    
-      </main>
-      
-    </sidebarContext.Provider>
-    }
-
+            {<MyListings />}
+          </main>
+        </sidebarContext.Provider>
+      }
     </>
   );
 };

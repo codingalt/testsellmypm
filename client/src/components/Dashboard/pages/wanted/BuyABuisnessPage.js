@@ -7,7 +7,7 @@ import { TailSpin } from "react-loader-spinner";
 import BuyABuisness from "../../Forms/wanted/BuyABuisness/BuyABuisness";
 
 const BuyABuisnessPage = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
   const [active, setActive] = useState(true);
   const [loader, setLoader] = useState(null);
@@ -26,13 +26,12 @@ const BuyABuisnessPage = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if(!data.success){
+      if (!data.success) {
         setIsAuthenticated(false);
-        navigate('/login')
+        navigate("/login");
       }
-      setIsAuthenticated(true)
+      setIsAuthenticated(true);
       setLoader(false);
-   
     } catch (error) {
       console.log(error);
       navigate("/login");
@@ -43,42 +42,36 @@ const BuyABuisnessPage = () => {
   useEffect(() => {
     Authenticate();
   }, []);
- 
+
   return (
     <>
-    { 
-      <sidebarContext.Provider
-      value={{ isOpen: active, toggle: toggleSidebar }}
-    >
-      {/* Sidebar */}
-      {<Sidebar />}
+      {
+        <sidebarContext.Provider
+          value={{ isOpen: active, toggle: toggleSidebar }}
+        >
+          {/* Sidebar */}
+          {<Sidebar />}
 
-      {/* Main Content */}
-      <main className={active ? "main" : "main main-reverse"}>
-      <TailSpin
-          height="60"
-          width="60"
-          color="#744BBE"
-          ariaLabel="tail-spin-loading"
-          radius="1"
-          wrapperStyle={{}}
-          wrapperClass="loader_wrapper2"
-          visible={loader}
-        />
-        {/* Navbar */}
-        <Navbar />
+          {/* Main Content */}
+          <main className={active ? "main" : "main main-reverse"}>
+            <TailSpin
+              height="60"
+              width="60"
+              color="#744BBE"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass="loader_wrapper2"
+              visible={loader}
+            />
+            {/* Navbar */}
+            <Navbar />
 
-        {/* Select Category  */}
-        {
-            isAuthenticated &&
-            <BuyABuisness />
-        }
-    
-      </main>
-      
-    </sidebarContext.Provider>
-    }
-
+            {/* Select Category  */}
+            {isAuthenticated && <BuyABuisness />}
+          </main>
+        </sidebarContext.Provider>
+      }
     </>
   );
 };

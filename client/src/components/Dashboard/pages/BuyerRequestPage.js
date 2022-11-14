@@ -65,7 +65,7 @@ const BuyerRequestPage = () => {
             toggle: toggleSidebar,
             sidebarRef,
             approvedItem,
-            setApprovedItem
+            setApprovedItem,
           }}
         >
           {/* Sidebar */}

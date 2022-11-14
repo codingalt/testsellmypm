@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useFormik } from 'formik';
+import { useFormik } from "formik";
 import { TailSpin } from "react-loader-spinner";
 import { toast, ToastContainer } from "react-toastify";
 import MainContext from "../../../Context/MainContext";
@@ -34,21 +34,19 @@ const CreateAdvisor = () => {
 
   const formik = useFormik({
     initialValues: {
-        name: '',
-        title: '',
-        location: '',
-        dealSize: '',
-        since: '',
-        dealsClosed: 0,
-        expertise: [],
-        shortBio: '',
-        linkdin: '',
-        website: '',
-        profilePicture: [],
-         
+      name: "",
+      title: "",
+      location: "",
+      dealSize: "",
+      since: "",
+      dealsClosed: 0,
+      expertise: [],
+      shortBio: "",
+      linkdin: "",
+      website: "",
+      profilePicture: [],
     },
-    onSubmit: values => {
-      console.log(JSON.stringify(values.expertise, null, 2));
+    onSubmit: (values) => {
       const postData = async () => {
         setLoader(true);
         const res = await fetch(`/advisor/create`, {
@@ -56,35 +54,34 @@ const CreateAdvisor = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(values,null,2),
+          body: JSON.stringify(values, null, 2),
         });
         const data = await res.json();
-        console.log(data);
-        if(data.success){
-          toastHandle(true, 'Advisor Profile Created Successfully.');
+        if (data.success) {
+          toastHandle(true, "Advisor Profile Created Successfully.");
         }
         setLoader(false);
-      formik.resetForm();
+        formik.resetForm();
       };
       postData();
     },
   });
 
-  const profileHandler = (e)=>{
+  const profileHandler = (e) => {
     const files = Array.from(e.target.files);
-    files.forEach((file)=>{
+    files.forEach((file) => {
       const reader = new FileReader();
 
-      reader.onload = ()=>{
-        if(reader.readyState === 2){
-          setProfilePicture((prev)=> [...prev, reader.result])
-          formik.values.profilePicture.push(reader.result)
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setProfilePicture((prev) => [...prev, reader.result]);
+          formik.values.profilePicture.push(reader.result);
         }
-      }
+      };
 
       reader.readAsDataURL(file);
-    })
-  }
+    });
+  };
 
   return (
     <div className="listing-contract">
@@ -200,8 +197,8 @@ const CreateAdvisor = () => {
           </div>
 
           <div className="title">
-              <span>Expertise</span>
-            </div>
+            <span>Expertise</span>
+          </div>
 
           <div className="row">
             <div className="col-md-3">
@@ -257,7 +254,6 @@ const CreateAdvisor = () => {
                 />
               </div>
             </div>
-
           </div>
 
           <div className="row">
@@ -314,7 +310,6 @@ const CreateAdvisor = () => {
                 />
               </div>
             </div>
-
           </div>
 
           <div className="row">
@@ -377,19 +372,22 @@ const CreateAdvisor = () => {
                   onChange={profileHandler}
                   required
                   accept="image/*"
-                  style={{display:'flex',alignItems:'center'}}
+                  style={{ display: "flex", alignItems: "center" }}
                 />
               </div>
             </div>
           </div>
 
           <div className="listing-contract-btn">
-            <button style={loader ? {opacity: '.75'} : {opacity: '1'}} type="submit" className="button">{loader ? 'Please wait...' : 'Create Advisor Profile'}</button>
-            </div>
-
-
+            <button
+              style={loader ? { opacity: ".75" } : { opacity: "1" }}
+              type="submit"
+              className="button"
+            >
+              {loader ? "Please wait..." : "Create Advisor Profile"}
+            </button>
+          </div>
         </form>
-
       </div>
     </div>
   );

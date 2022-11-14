@@ -24,8 +24,8 @@ const ListingView = ({ listingId }) => {
   const [listing, setListing] = useState([]);
   const [loader, setLoader] = useState(null);
   const [images, setImages] = useState([]);
-  const [chatId, setChatId] = useState('');
-  const [messageText, setMessageText] = useState('');
+  const [chatId, setChatId] = useState("");
+  const [messageText, setMessageText] = useState("");
   const { isPaid, myOwnId } = useContext(MainContext);
 
   const toastHandle = (result, message) => {
@@ -74,7 +74,10 @@ const ListingView = ({ listingId }) => {
 
   const sendBuyerRequest = async () => {
     if (!isPaid) {
-     toastHandle(false,"You are not a Paid Member. Please Activate a Membership Package");
+      toastHandle(
+        false,
+        "You are not a Paid Member. Please Activate a Membership Package"
+      );
       return;
     }
     setLoader(true);
@@ -102,11 +105,17 @@ const ListingView = ({ listingId }) => {
   // Create chat and send message
   const createChat = async () => {
     if (!isPaid) {
-      toastHandle(false,"You are not a Paid User. Please Activate any Membership Package");
-       return;
-     }
-    if(myOwnId === listing[0].userId){
-      toastHandle(false, "Unable to send message. This Advert is Published by you!");
+      toastHandle(
+        false,
+        "You are not a Paid User. Please Activate any Membership Package"
+      );
+      return;
+    }
+    if (myOwnId === listing[0].userId) {
+      toastHandle(
+        false,
+        "Unable to send message. This Advert is Published by you!"
+      );
       return;
     }
     try {
@@ -118,19 +127,17 @@ const ListingView = ({ listingId }) => {
         },
         body: JSON.stringify({
           senderId: myOwnId,
-          receiverId: listing[0].userId
-        })
+          receiverId: listing[0].userId,
+        }),
       });
       const data = await res.json();
-      if(data.success){
-        setChatId(data._id)
+      if (data.success) {
+        setChatId(data._id);
         sendMessage(data._id);
-      }else{
-        setChatId(data.chat._id)
+      } else {
+        setChatId(data.chat._id);
         sendMessage(data.chat._id);
       }
-      
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -147,15 +154,17 @@ const ListingView = ({ listingId }) => {
         body: JSON.stringify({
           senderId: myOwnId,
           chatId: chatId,
-          text: messageText
-        })
+          text: messageText,
+        }),
       });
       const data = await res.json();
-      if(res.ok){
-        toastHandle(true, 'Message Sent Successfully. Go to Dashboard to view your chat!');
-        setMessageText('');
+      if (res.ok) {
+        toastHandle(
+          true,
+          "Message Sent Successfully. Go to Dashboard to view your chat!"
+        );
+        setMessageText("");
       }
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -166,26 +175,24 @@ const ListingView = ({ listingId }) => {
     window.scrollTo(0, 0);
   }, []);
 
-
   return (
     <>
       <div className="listing-view">
-      <TailSpin
-        height="60"
-        width="60"
-        color="#744BBE"
-        ariaLabel="tail-spin-loading"
-        radius="1"
-        wrapperStyle={{}}
-        wrapperClass="loader_wrapper2"
-        visible={loader}
-      />
-      <ToastContainer />
+        <TailSpin
+          height="60"
+          width="60"
+          color="#744BBE"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass="loader_wrapper2"
+          visible={loader}
+        />
+        <ToastContainer />
         <div className="container">
           <div className="row">
             <div className="col-md-6 l-left">
               <div className="inner">
-               
                 <Swiper
                   className="mySwiper"
                   effect={"fade"}
@@ -248,92 +255,91 @@ const ListingView = ({ listingId }) => {
                     </div>
 
                     {/* Rentals KPIS  */}
-                    {
-                      item.rentalKpis &&
-                    
-                    <div className="rental-kpi">
-                      {
-                        item.rentalKpis &&
-                        <div className="h3">Short Term Rental KPIs</div>
-                      }
-                      
-                      <table className="table table-bordered">
-                        <tbody>
-                          {
-                            item.rentalKpis &&
-                            <tr>
-                            <th scope="row">Average Booking Value</th>
-                            <td>${item.rentalKpis.avgBookingValue}</td>
-                          </tr>
-                          }
-                         {
-                          item.rentalKpis &&
-                          <tr>
-                          <th scope="row">Average Occupancy Rate</th>
-                          <td>${item.rentalKpis.avgOccupancyRate}</td>
-                        </tr>
-                         }
-                         {
-                          item.rentalKpis &&
-                          <tr>
-                          <th scope="row">Months left on contract</th>
-                          <td>{item.rentalKpis.monthsLeftOnContract}</td>
-                        </tr>
-                         }
-                         {
-                          item.rentalKpis &&
-                          <tr>
-                          <th scope="row">Months Under Your Control</th>
-                          <td>{item.rentalKpis?.monthsUnderYourControl}</td>
-                        </tr>
-                         }
-                       
-                        </tbody>
-                      </table>
-                    </div>
-                }
+                    {item.rentalKpis && (
+                      <div className="rental-kpi">
+                        {item.rentalKpis && (
+                          <div className="h3">Short Term Rental KPIs</div>
+                        )}
+
+                        <table className="table table-bordered">
+                          <tbody>
+                            {item.rentalKpis && (
+                              <tr>
+                                <th scope="row">Average Booking Value</th>
+                                <td>${item.rentalKpis.avgBookingValue}</td>
+                              </tr>
+                            )}
+                            {item.rentalKpis && (
+                              <tr>
+                                <th scope="row">Average Occupancy Rate</th>
+                                <td>${item.rentalKpis.avgOccupancyRate}</td>
+                              </tr>
+                            )}
+                            {item.rentalKpis && (
+                              <tr>
+                                <th scope="row">Months left on contract</th>
+                                <td>{item.rentalKpis.monthsLeftOnContract}</td>
+                              </tr>
+                            )}
+                            {item.rentalKpis && (
+                              <tr>
+                                <th scope="row">Months Under Your Control</th>
+                                <td>
+                                  {item.rentalKpis?.monthsUnderYourControl}
+                                </td>
+                              </tr>
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
                     {/* Rental kpi ends  */}
 
                     <div className="buttons message-btns">
-                      <button onClick={sendBuyerRequest} className="button">{loader ? "SENDING..." : "Request for More Info"}</button>
+                      <button onClick={sendBuyerRequest} className="button">
+                        {loader ? "SENDING..." : "Request for More Info"}
+                      </button>
                       {/* <button className="button">Send Message</button> */}
                     </div>
                   </div>
-                  
                 );
               })}
 
-        {
-          listing.length !== 0 &&
-          <div className="av-right mt-4 mb-5">
-          <div className="av-message-box">
-            <div className="av-title">Let’s Connect</div>
-            <div className="av-descript">
-              To get more details about Advert, Send a message
-            </div>
-            <div className="av-message">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="form-group">
-                    <label className="av-label">Message</label>
-                    <textarea
-                      type="text"
-                      className="form-control"
-                      required
-                      rows={5}
-                      value={messageText}
-                      onChange={(e)=> {setMessageText(e.target.value)}}
-                    />
+              {listing.length !== 0 && (
+                <div className="av-right mt-4 mb-5">
+                  <div className="av-message-box">
+                    <div className="av-title">Let’s Connect</div>
+                    <div className="av-descript">
+                      To get more details about Advert, Send a message
+                    </div>
+                    <div className="av-message">
+                      <div className="row">
+                        <div className="col-md-12">
+                          <div className="form-group">
+                            <label className="av-label">Message</label>
+                            <textarea
+                              type="text"
+                              className="form-control"
+                              required
+                              rows={5}
+                              value={messageText}
+                              onChange={(e) => {
+                                setMessageText(e.target.value);
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        onClick={createChat}
+                        className="av-message-btn button"
+                      >
+                        Message <ai.AiOutlineArrowRight />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <button onClick={createChat} className="av-message-btn button">Message <ai.AiOutlineArrowRight /></button>
-            </div>
-          </div>
-        </div> 
-        }
-
-
+              )}
             </div>
           </div>
         </div>

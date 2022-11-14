@@ -1,21 +1,21 @@
-const listingModel = require('../ListingModel');
+const listingModel = require("../ListingModel");
 const mongoose = require("mongoose");
 var options = { discriminatorKey: "type" };
 
 var buyListingContract = listingModel.discriminator(
-    "buyListingContract",
-    new mongoose.Schema(
-      {
-        listType: {
-            type: String,
-        },
-        rentalKpis:{
-            avgBookingValue: Number,
-            avgOccupancyRate: Number,
-        }
+  "buyListingContract",
+  new mongoose.Schema(
+    {
+      listType: {
+        type: String,
       },
-      options
-    )
-  );
+      rentalKpis: {
+        avgBookingValue: Number,
+        avgOccupancyRate: Number,
+      },
+    },
+    options
+  )
+);
 
-  module.exports = {buyListingContract}
+module.exports = { buyListingContract };

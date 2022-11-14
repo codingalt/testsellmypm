@@ -19,7 +19,7 @@ const AdvisorPage = () => {
   const [advisors, setAdvisors] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [sortRelevance, setSortRelevance] = useState("");
-  const [sortExpertise, setSortExpertise] = useState('');
+  const [sortExpertise, setSortExpertise] = useState("");
   const [lessThan, setLessThan] = useState(0);
   const [greaterThan, setGreaterThan] = useState(0);
   const toggleSidebar = () => {
@@ -36,8 +36,8 @@ const AdvisorPage = () => {
       },
     });
     const data = await res.json();
-    if(data.success){
-      setAdvisors(data.advisors)
+    if (data.success) {
+      setAdvisors(data.advisors);
     }
     setLoader(false);
   };
@@ -54,20 +54,20 @@ const AdvisorPage = () => {
       },
     });
     const data = await res.json();
-    if(data.success){
-      setAdvisors(data.advisors)
+    if (data.success) {
+      setAdvisors(data.advisors);
     }
     setLoader(false);
   };
 
-  useEffect(()=>{
-    if(keyword === ""){
+  useEffect(() => {
+    if (keyword === "") {
       getAdvisors();
     }
-  },[keyword])
+  }, [keyword]);
 
-  const handleKeyDown = event => {
-    if (event.key === 'Enter') {
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
       getAdvisorsBySearch();
     }
   };
@@ -126,7 +126,7 @@ const AdvisorPage = () => {
       });
       const data = await res.json();
       if (data.success) {
-        setAdvisors(data.advisors)
+        setAdvisors(data.advisors);
       }
       setLoader(false);
     } catch (error) {
@@ -145,12 +145,12 @@ const AdvisorPage = () => {
         },
         credentials: "include",
         body: JSON.stringify({
-          expertise: sortExpertise
-        })
+          expertise: sortExpertise,
+        }),
       });
       const data = await res.json();
       if (data) {
-        setAdvisors(data.advisors)
+        setAdvisors(data.advisors);
       }
       setLoader(false);
     } catch (error) {
@@ -170,12 +170,12 @@ const AdvisorPage = () => {
         credentials: "include",
         body: JSON.stringify({
           lessThan: lessThan,
-          greaterThan: greaterThan
-        })
+          greaterThan: greaterThan,
+        }),
       });
       const data = await res.json();
       if (data) {
-        setAdvisors(data.advisors)
+        setAdvisors(data.advisors);
         console.log(data);
       }
       setLoader(false);
@@ -204,7 +204,7 @@ const AdvisorPage = () => {
             sortByExpertise,
             setLessThan,
             setGreaterThan,
-            sortByDealsClosed
+            sortByDealsClosed,
           }}
         >
           {/* Sidebar */}

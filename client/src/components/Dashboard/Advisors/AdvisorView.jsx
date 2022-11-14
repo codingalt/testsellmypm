@@ -5,18 +5,18 @@ import * as md from "react-icons/md";
 import * as ai from "react-icons/ai";
 import * as fa from "react-icons/fa";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import circle from '../../../images/circle.png'
+import circle from "../../../images/circle.png";
 import { toast, ToastContainer } from "react-toastify";
 import { TailSpin } from "react-loader-spinner";
-import loadingProfile from '../../../images/loadingProfile.png'
+import loadingProfile from "../../../images/loadingProfile.png";
 import MainContext from "../../Context/MainContext";
 
 const AdvisorView = () => {
   const [loader, setLoader] = useState(null);
-  const {advisorId} = useParams();
+  const { advisorId } = useParams();
   const [advisor, setAdvisor] = useState([]);
-  const [messageText, setMessageText] = useState('');
-  const [chatId, setChatId] = useState('');
+  const [messageText, setMessageText] = useState("");
+  const [chatId, setChatId] = useState("");
   const { isPaid, myOwnId } = useContext(MainContext);
   let pathname = window.location;
   const navigate = useNavigate();
@@ -24,10 +24,13 @@ const AdvisorView = () => {
   // Create chat and send message
   const createChat = async () => {
     if (!isPaid) {
-      toastHandle(false,"You are not a Paid Member. Please Activate a Membership Package");
-       return;
-     }
-    if(myOwnId === advisorId){
+      toastHandle(
+        false,
+        "You are not a Paid Member. Please Activate a Membership Package"
+      );
+      return;
+    }
+    if (myOwnId === advisorId) {
       toastHandle(false, "Unable to send message to this profile.");
       return;
     }
@@ -40,20 +43,17 @@ const AdvisorView = () => {
         },
         body: JSON.stringify({
           senderId: myOwnId,
-          receiverId: advisorId
-        })
+          receiverId: advisorId,
+        }),
       });
       const data = await res.json();
-      if(data.success){
-        setChatId(data._id)
+      if (data.success) {
+        setChatId(data._id);
         sendMessage(data._id);
-      }else{
-        setChatId(data.chat._id)
+      } else {
+        setChatId(data.chat._id);
         sendMessage(data.chat._id);
-        console.log(data.chat._id);
       }
-      
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -70,13 +70,16 @@ const AdvisorView = () => {
         body: JSON.stringify({
           senderId: myOwnId,
           chatId: chatId,
-          text: messageText
-        })
+          text: messageText,
+        }),
       });
       const data = await res.json();
-      if(res.ok){
-        toastHandle(true, 'Message Sent Successfully. Go to Dashboard to view your chat!');
-        setMessageText('');
+      if (res.ok) {
+        toastHandle(
+          true,
+          "Message Sent Successfully. Go to Dashboard to view your chat!"
+        );
+        setMessageText("");
       }
     } catch (error) {
       console.log(error);
@@ -102,9 +105,9 @@ const AdvisorView = () => {
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     getAdvisor();
-  },[advisorId])
+  }, [advisorId]);
 
   const toastHandle = (result, message) => {
     if (result) {
@@ -132,33 +135,37 @@ const AdvisorView = () => {
 
   useEffect(() => {
     pathname = window.location.href;
-}, [window.location.href]);
+  }, [window.location.href]);
 
-  const copyProfile = ()=>{
-    navigator.clipboard.writeText(pathname)
+  const copyProfile = () => {
+    navigator.clipboard.writeText(pathname);
     toastHandle(true, "URL Copied to clipboard.");
-  }
+  };
 
   return (
     <div className="advisor-view">
       <ToastContainer />
       <div className="back-button">
-        <NavLink to={'/advisors'}>
-        <div className="back shadow-sm border">
-          <ai.AiOutlineArrowLeft />
-        </div>
+        <NavLink to={"/advisors"}>
+          <div className="back shadow-sm border">
+            <ai.AiOutlineArrowLeft />
+          </div>
         </NavLink>
-        <div onClick={()=> navigate('./')} className="text">Back</div>
+        <div onClick={() => navigate("./")} className="text">
+          Back
+        </div>
       </div>
       <div className="row advisor-view-row">
         <div className="col-md-7 av-left">
           <div className="copy-profile-link border" onClick={copyProfile}>
-            <span><bs.BsLink45Deg /></span>
+            <span>
+              <bs.BsLink45Deg />
+            </span>
           </div>
           <div className="a-details">
             <div className="c-profile">
               <img
-                src={!loader? advisor.profilePicture?.url : loadingProfile}
+                src={!loader ? advisor.profilePicture?.url : loadingProfile}
                 alt=""
               />
             </div>
@@ -172,9 +179,7 @@ const AdvisorView = () => {
                   <span>Top closer</span>
                 </div>
               </div>
-              <div className="card-title av-title">
-              {advisor?.title}
-              </div>
+              <div className="card-title av-title">{advisor?.title}</div>
               <div className="a-location">
                 <span>
                   <md.MdLocationOn />
@@ -183,58 +188,69 @@ const AdvisorView = () => {
               </div>
             </div>
           </div>
-            
+
           <div className="deal-info av-deal-info">
             <div className="inner">
-                <span>Preferred deal size</span>
-                <div className="icon">
-                    <span><fa.FaWallet /></span>
-                    <span>{advisor?.dealSize}</span>
-                </div>
+              <span>Preferred deal size</span>
+              <div className="icon">
+                <span>
+                  <fa.FaWallet />
+                </span>
+                <span>{advisor?.dealSize}</span>
+              </div>
             </div>
             <div className="inner">
-                <span>On SellMyPm since</span>
-                <div className="icon">
-                    <span><md.MdAccessTimeFilled /></span>
-                    <span>{advisor?.since}</span>
-                </div>
+              <span>On SellMyPm since</span>
+              <div className="icon">
+                <span>
+                  <md.MdAccessTimeFilled />
+                </span>
+                <span>{advisor?.since}</span>
+              </div>
             </div>
             <div className="inner">
-                <span>Deals closed</span>
-                <div className="icon">
-                    <span><fa.FaMoneyCheck /></span>
-                    <span>{advisor?.dealsClosed}</span>
-                </div>
+              <span>Deals closed</span>
+              <div className="icon">
+                <span>
+                  <fa.FaMoneyCheck />
+                </span>
+                <span>{advisor?.dealsClosed}</span>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <div className="av-expertise">
+          <div className="av-expertise">
             <div className="expertise-title">Expertise</div>
             <ul>
-              {
-                advisor?.expertise?.map((item,i)=>(
-                  item !== "" &&
-                  <li key={i}><bs.BsFillRecordCircleFill /> {item}</li>
-                ))
-              }
+              {advisor?.expertise?.map(
+                (item, i) =>
+                  item !== "" && (
+                    <li key={i}>
+                      <bs.BsFillRecordCircleFill /> {item}
+                    </li>
+                  )
+              )}
             </ul>
-        </div>
+          </div>
 
-        <div className="short-bio">
-          <span>Short Bio</span>
-          <span>{advisor?.shortBio}</span>
-        </div>
+          <div className="short-bio">
+            <span>Short Bio</span>
+            <span>{advisor?.shortBio}</span>
+          </div>
 
-        <div className="linkdin-link">
-          <span>LinkedIn</span>
-          <a target="_blank" href={advisor?.linkdin}>{advisor?.linkdin}</a>
-        </div>
+          <div className="linkdin-link">
+            <span>LinkedIn</span>
+            <a target="_blank" href={advisor?.linkdin}>
+              {advisor?.linkdin}
+            </a>
+          </div>
 
-        <div className="linkdin-link">
-          <span>Website</span>
-          <a target="_blank" href={advisor?.website}>{advisor?.website}</a>
-        </div>
-
+          <div className="linkdin-link">
+            <span>Website</span>
+            <a target="_blank" href={advisor?.website}>
+              {advisor?.website}
+            </a>
+          </div>
         </div>
         <div className="col-md-5 av-right">
           <div className="av-message-box">
@@ -253,12 +269,16 @@ const AdvisorView = () => {
                       required
                       rows={5}
                       value={messageText}
-                      onChange={(e)=> {setMessageText(e.target.value)}}
+                      onChange={(e) => {
+                        setMessageText(e.target.value);
+                      }}
                     />
                   </div>
                 </div>
               </div>
-              <button onClick={createChat} className="av-message-btn button">Message <ai.AiOutlineArrowRight /></button>
+              <button onClick={createChat} className="av-message-btn button">
+                Message <ai.AiOutlineArrowRight />
+              </button>
             </div>
           </div>
         </div>

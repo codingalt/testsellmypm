@@ -35,35 +35,37 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    subscription: [{
-      package: {
-        type: String,
-        default: "free"
+    subscription: [
+      {
+        package: {
+          type: String,
+          default: "free",
+        },
+        packageType: {
+          type: String,
+          required: true,
+        },
+        status: {
+          type: String,
+          required: true,
+        },
+        expiryDate: {
+          type: Date,
+          required: true,
+        },
+        createdDate: {
+          type: Date,
+          required: true,
+        },
       },
-      packageType: {
-        type: String,
-        required: true
-      },
-      status: {
-        type: String,
-        required: true
-      },
-      expiryDate: {
-        type: Date,
-        required: true,
-      },
-      createdDate: {
-        type: Date,
-        required: true
-      }
-    }],
+    ],
     profilePicture: {
       public_id: {
-        type: String
+        type: String,
       },
       url: {
         type: String,
-      }
+      },
     },
     tokens: [
       {

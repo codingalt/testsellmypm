@@ -60,23 +60,29 @@ const Listings = () => {
                     </div>
                     <div className="member-txt">
                       {!isPaid ? (
-                        <NavLink className='upgrade' to={'/'}>
+                        <NavLink className="upgrade" to={"/"}>
                           <span>
                             <bi.BiLockAlt /> Upgrade for Pricing
                           </span>
                         </NavLink>
                       ) : (
-                        <NavLink className='upgrade' to={"/listings/view/" + item._id}>
+                        <NavLink
+                          className="upgrade"
+                          to={"/listings/view/" + item._id}
+                        >
                           <span>Contact for details</span>
                         </NavLink>
                       )}
 
                       {isPaid ? (
-                        <NavLink className='view-more' to={"/listings/view/" + item._id}>
+                        <NavLink
+                          className="view-more"
+                          to={"/listings/view/" + item._id}
+                        >
                           <span>View More Info</span>
                         </NavLink>
                       ) : (
-                        <NavLink className='view-more' to={"/login"}>
+                        <NavLink className="view-more" to={"/login"}>
                           <span>Login for more</span>
                         </NavLink>
                       )}

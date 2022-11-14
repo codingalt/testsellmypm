@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import './footer.css'
-import * as bs from 'react-icons/bs'
-import * as fa from 'react-icons/fa'
-import * as io from 'react-icons/io'
+import "./footer.css";
+import * as bs from "react-icons/bs";
+import * as fa from "react-icons/fa";
+import * as io from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import MainContext from "../Context/MainContext";
 
 const Footer = () => {
-  const {memberShipScrollHandle} = useContext(MainContext);
+  const { memberShipScrollHandle } = useContext(MainContext);
 
   return (
     <div>
@@ -17,25 +17,33 @@ const Footer = () => {
             <div className="row">
               <div className="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-mb-12">
                 <div className="widget">
-                  <h3 className="block-title text-bold text-white">Short Link</h3>
+                  <h3 className="block-title text-bold text-white">
+                    Short Link
+                  </h3>
                   <ul className="menu">
                     <li>
-                      <NavLink to={'/terms'} style={{color:'#eaeaea'}}>
-                       Terms & Conditions
+                      <NavLink to={"/terms"} style={{ color: "#eaeaea" }}>
+                        Terms & Conditions
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to={'/privacy'} style={{color:'#eaeaea'}}>
+                      <NavLink to={"/privacy"} style={{ color: "#eaeaea" }}>
                         Privacy Policy
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to={'/buyersellermnda'} style={{color:'#eaeaea'}}>
-                       Seller & Buyer MNDA
+                      <NavLink
+                        to={"/buyersellermnda"}
+                        style={{ color: "#eaeaea" }}
+                      >
+                        Seller & Buyer MNDA
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to={'/buyersellerterms'} style={{color:'#eaeaea'}}>
+                      <NavLink
+                        to={"/buyersellerterms"}
+                        style={{ color: "#eaeaea" }}
+                      >
                         Seller & Buyer Terms & Conditions
                       </NavLink>
                     </li>
@@ -47,22 +55,29 @@ const Footer = () => {
                   <h3 className="block-title text-bold text-white">Company</h3>
                   <ul className="menu">
                     <li>
-                      <NavLink to={'/listing/post'} style={{color:'#eaeaea'}}>
-                       Post Listing
+                      <NavLink
+                        to={"/listing/post"}
+                        style={{ color: "#eaeaea" }}
+                      >
+                        Post Listing
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to={'/listing'} style={{color:'#eaeaea'}}>
+                      <NavLink to={"/listing"} style={{ color: "#eaeaea" }}>
                         Browse Listings
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to={'/signup'} style={{color:'#eaeaea'}}>
-                       Create Account
+                      <NavLink to={"/signup"} style={{ color: "#eaeaea" }}>
+                        Create Account
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to={'#'} onClick={memberShipScrollHandle} style={{color:'#eaeaea'}}>
+                      <NavLink
+                        to={"#"}
+                        onClick={memberShipScrollHandle}
+                        style={{ color: "#eaeaea" }}
+                      >
                         Membership Plans
                       </NavLink>
                     </li>
@@ -73,8 +88,11 @@ const Footer = () => {
                 <div className="widget">
                   <h3 className="text-white">ABOUT US</h3>
                   <div className="textwidget">
-                    <p style={{color:'#eaeaea'}}>
-                    SellMyPM is a marketplace connecting PMs looking to buy listing contracts or entire businesses with those looking to sell. It also provides help and support to PMs looking to sell with the selling process.
+                    <p style={{ color: "#eaeaea" }}>
+                      SellMyPM is a marketplace connecting PMs looking to buy
+                      listing contracts or entire businesses with those looking
+                      to sell. It also provides help and support to PMs looking
+                      to sell with the selling process.
                     </p>
                   </div>
                   <ul className="footer-social">
@@ -85,7 +103,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a className="instagram" href="#">
-                       <bs.BsInstagram />
+                        <bs.BsInstagram />
                       </a>
                     </li>
                     <li>
@@ -104,15 +122,19 @@ const Footer = () => {
             </div>
           </div>
         </section>
-        <div id="copyright" style={{background:'#000'}}>
+        <div id="copyright" style={{ background: "#000" }}>
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-md-12">
                 <div className="site-info">
                   <p className="text-center text-white">
-                    &copy; copyright sellmypm.com  
-                    <span className="text-white" style={{marginLeft:'5px'}} id="copyright-year">
-                    {new Date().getFullYear()}
+                    &copy; copyright sellmypm.com
+                    <span
+                      className="text-white"
+                      style={{ marginLeft: "5px" }}
+                      id="copyright-year"
+                    >
+                      {new Date().getFullYear()}
                     </span>
                   </p>
                 </div>

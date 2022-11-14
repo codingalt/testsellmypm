@@ -102,33 +102,36 @@ const MyListings = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {slicedData?.slice(0).reverse().map((item, i) => {
-                      return (
-                        <tr key={item._id}>
-                          <td>{i + 1}</td>
-                          <td>
-                            <img
-                              src={item.images[0].url}
-                              style={{
-                                width: "44px",
-                                height: "40px",
-                                borderRadius: "11px",
-                              }}
-                              alt=""
-                            />
-                          </td>
-                          <td>{item.details?.title?.slice(0, 40)}...</td>
-                          <td>{item.details?.summary?.slice(0, 110)}...</td>
-                          <td>{item.saleDetails?.askingPrice}</td>
-                          <td>{item.details?.location?.country}</td>
-                          <td>
-                            <NavLink to={`/listings/view/${item._id}`}>
-                              View
-                            </NavLink>
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    {slicedData
+                      ?.slice(0)
+                      .reverse()
+                      .map((item, i) => {
+                        return (
+                          <tr key={item._id}>
+                            <td>{i + 1}</td>
+                            <td>
+                              <img
+                                src={item.images[0].url}
+                                style={{
+                                  width: "44px",
+                                  height: "40px",
+                                  borderRadius: "11px",
+                                }}
+                                alt=""
+                              />
+                            </td>
+                            <td>{item.details?.title?.slice(0, 40)}...</td>
+                            <td>{item.details?.summary?.slice(0, 110)}...</td>
+                            <td>{item.saleDetails?.askingPrice}</td>
+                            <td>{item.details?.location?.country}</td>
+                            <td>
+                              <NavLink to={`/listings/view/${item._id}`}>
+                                View
+                              </NavLink>
+                            </td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
               )}

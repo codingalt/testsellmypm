@@ -14,7 +14,7 @@ const Signup = () => {
     email: "",
     password: "",
     confirmPass: "",
-    terms: ""
+    terms: "",
   });
 
   let name, value;
@@ -27,13 +27,13 @@ const Signup = () => {
 
   const postData = async (e) => {
     e.preventDefault();
-    const { name, email, password, confirmPass,terms } = user;
-    if(terms === ""){
-      setErrorMsg('Please Agree to Our Terms & Conditions');
+    const { name, email, password, confirmPass, terms } = user;
+    if (terms === "") {
+      setErrorMsg("Please Agree to Our Terms & Conditions");
       setError(true);
       return;
     }
-  
+
     setLoader(true);
     const res = await fetch(`/register`, {
       method: "POST",
@@ -45,7 +45,7 @@ const Signup = () => {
         email,
         password,
         confirmPass,
-        terms
+        terms,
       }),
     });
     const data = await res.json();
@@ -61,8 +61,8 @@ const Signup = () => {
     <div>
       <div className="main-container">
         <TailSpin
-          height="110"
-          width="110"
+          height="60"
+          width="60"
           color="#744BBE"
           ariaLabel="tail-spin-loading"
           radius="1"
@@ -151,9 +151,18 @@ const Signup = () => {
                 </div>
 
                 <div className="form-group d-flex align-items-center mt-3">
-                  <input name="terms" onChange={getData} value='checked' type="checkbox" required style={{transform:'scale(1.4)',marginRight:'12px'}} />
-                 <small>Before Signing Up, Agree to Our <NavLink to={'/terms'}>Terms and Conditions </NavLink></small>
-                  
+                  <input
+                    name="terms"
+                    onChange={getData}
+                    value="checked"
+                    type="checkbox"
+                    required
+                    style={{ transform: "scale(1.4)", marginRight: "12px" }}
+                  />
+                  <small>
+                    Before Signing Up, Agree to Our{" "}
+                    <NavLink to={"/terms"}>Terms and Conditions </NavLink>
+                  </small>
                 </div>
 
                 <div

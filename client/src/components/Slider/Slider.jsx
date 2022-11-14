@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay,EffectFade } from "swiper";
+import { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
 import "./slider.css";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -19,42 +19,60 @@ import { useContext } from "react";
 import MainContext from "../Context/MainContext";
 
 const Slider = () => {
-  const {memberShipScrollHandle} = useContext(MainContext)
+  const { memberShipScrollHandle } = useContext(MainContext);
   return (
     <div className="slider-container">
       <Swiper
         className="mySwiper"
         effect={"fade"}
-        modules={[Navigation, Pagination,Autoplay,EffectFade]}
-        // navigation={true}
+        modules={[Navigation, Pagination, Autoplay, EffectFade]}
         pagination={{
-          clickable:true
+          clickable: true,
         }}
         centeredSlides={true}
         auto={true}
         autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          loop={true}
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
       >
         <SwiperSlide>
           <img src={s5} alt="" />
           <div className="overlay">
             <div className="slide-item">
-              <div className="title" data-aos="fade-up" data-aos-duration="1800">
-            <h1> Short Term Rentals <span> #1 </span>Property</h1>
-            <h1 className="sec-h1">Manager <span>Marketplace</span></h1>
-            </div>
-            <span data-aos="fade-left" data-aos-duration="1800">Advertise to buy and sell businesses, listings and properties in complete confidence</span>
-            <div className="buttons">
-              <NavLink to={'/listing/post'}>
-                <button>Post Listing</button>
+              <div
+                className="title"
+                data-aos="fade-up"
+                data-aos-duration="1800"
+              >
+                <h1>
+                  {" "}
+                  Short Term Rentals <span> #1 </span>Property
+                </h1>
+                <h1 className="sec-h1">
+                  Manager <span>Marketplace</span>
+                </h1>
+              </div>
+              <span data-aos="fade-left" data-aos-duration="1800">
+                Advertise to buy and sell businesses, listings and properties in
+                complete confidence
+              </span>
+              <div className="buttons">
+                <NavLink to={"/listing/post"}>
+                  <button>Post Listing</button>
                 </NavLink>
-                <NavLink to={'/listing'}>
-                <button style={{background:'transparent',border:'2px solid #fff'}}>Browse Listings</button>
+                <NavLink to={"/listing"}>
+                  <button
+                    style={{
+                      background: "transparent",
+                      border: "2px solid #fff",
+                    }}
+                  >
+                    Browse Listings
+                  </button>
                 </NavLink>
-            </div>
+              </div>
             </div>
           </div>
         </SwiperSlide>
@@ -63,15 +81,29 @@ const Slider = () => {
           <div className="overlay">
             <div className="slide-item">
               <div className="title">
-            <h1 className="title2"> The Fastest, Easiest way to <span>Sell</span>  your PM.</h1>
-            <h1 className="title2">No Fees. No hassle. <span>Total anonymity.</span></h1>
-            </div>
-            <span>Short-term rentals #1 acquisition marketplace. Get access to trusted buyers. Big or small, <br /> sell your PM at the maximum price in as little as 30 days.</span>
-            <div className="buttons">
-            <NavLink to={'/listing'}>
-                <button onClick={memberShipScrollHandle} style={{width:'13rem'}}>View Listings</button>
+                <h1 className="title2">
+                  {" "}
+                  The Fastest, Easiest way to <span>Sell</span> your PM.
+                </h1>
+                <h1 className="title2">
+                  No Fees. No hassle. <span>Total anonymity.</span>
+                </h1>
+              </div>
+              <span>
+                Short-term rentals #1 acquisition marketplace. Get access to
+                trusted buyers. Big or small, <br /> sell your PM at the maximum
+                price in as little as 30 days.
+              </span>
+              <div className="buttons">
+                <NavLink to={"/listing"}>
+                  <button
+                    onClick={memberShipScrollHandle}
+                    style={{ width: "13rem" }}
+                  >
+                    View Listings
+                  </button>
                 </NavLink>
-            </div>
+              </div>
             </div>
           </div>
         </SwiperSlide>
@@ -80,19 +112,28 @@ const Slider = () => {
           <div className="overlay">
             <div className="slide-item">
               <div className="title">
-            <h1 className="title2"><span>Everything</span> you need to buy your</h1>
-            <h1 className="title"> <span>Next PM</span></h1>
-            </div>
-                <span>Browse 100s of PMs for sale, vetted by acquisition veterans. Instantly connect with founders to evaluate key metrics. <br /> Hire approved advisors or skip straight to negotiation. Everything you need to issue an LOI in as little as 30 days.</span>
-            <div className="buttons">
-              <NavLink to={'/signup'}>
-                <button style={{width:'13rem'}}>Create Account</button>
+                <h1 className="title2">
+                  <span>Everything</span> you need to buy your
+                </h1>
+                <h1 className="title">
+                  {" "}
+                  <span>Next PM</span>
+                </h1>
+              </div>
+              <span>
+                Browse 100s of PMs for sale, vetted by acquisition veterans.
+                Instantly connect with founders to evaluate key metrics. <br />{" "}
+                Hire approved advisors or skip straight to negotiation.
+                Everything you need to issue an LOI in as little as 30 days.
+              </span>
+              <div className="buttons">
+                <NavLink to={"/signup"}>
+                  <button style={{ width: "13rem" }}>Create Account</button>
                 </NavLink>
-            </div>
+              </div>
             </div>
           </div>
         </SwiperSlide>
-  
       </Swiper>
     </div>
   );

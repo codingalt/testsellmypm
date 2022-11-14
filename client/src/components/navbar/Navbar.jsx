@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import * as bs from "react-icons/bs";
 import buisness from "../../images/buisness.png";
@@ -6,13 +6,13 @@ import listing from "../../images/list.png";
 import services from "../../images/services.png";
 import property from "../../images/property.png";
 import investment from "../../images/investment.png";
-import logoarea from '../../images/logoarea.png'
-import final from '../../images/final.png'
+import logoarea from "../../images/logoarea.png";
+import final from "../../images/final.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import wantedImages, { sellImages } from "./catImages";
 
 const Navbar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);  
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
@@ -27,13 +27,11 @@ const Navbar = () => {
         credentials: "include",
       });
       const data = await res.json();
-      console.log(data.success);
-      if(!data.success){
-        setIsAuthenticated(false);      
-      }else{
-        setIsAuthenticated(true)
+      if (!data.success) {
+        setIsAuthenticated(false);
+      } else {
+        setIsAuthenticated(true);
       }
-   
     } catch (error) {
       console.log(error);
       setIsAuthenticated(false);
@@ -42,7 +40,7 @@ const Navbar = () => {
 
   // get All categories
 
-  const getCategories = async()=>{
+  const getCategories = async () => {
     try {
       const res = await fetch(`/categories`, {
         method: "GET",
@@ -53,13 +51,13 @@ const Navbar = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if(data.success){
+      if (data.success) {
         setCategories(data.categories);
-      }  
+      }
     } catch (error) {
       setCategories([]);
     }
-  }
+  };
 
   useEffect(() => {
     Authenticate();
@@ -101,22 +99,24 @@ const Navbar = () => {
                       <div className="mx-auto inner">
                         <div className="">
                           <ul>
-                          <li>
+                            <li>
                               <a href="#">Wanted</a>
                             </li>
-                            {
-                              categories?.filter((item,i)=> item.type === 'wanted').map((item,i)=>{
-                                return(
-                                  <NavLink key={item._id} to={'/listing/' + item._id}>
-                                  <li key={item._id}>
-                              <img src={wantedImages[i].path} alt="" />
-                              <a href="#">{item.name}</a>
-                            </li>
-                            </NavLink>
-                                )
-                              })
-                            }
-                           
+                            {categories
+                              ?.filter((item, i) => item.type === "wanted")
+                              .map((item, i) => {
+                                return (
+                                  <NavLink
+                                    key={item._id}
+                                    to={"/listing/" + item._id}
+                                  >
+                                    <li key={item._id}>
+                                      <img src={wantedImages[i].path} alt="" />
+                                      <a href="#">{item.name}</a>
+                                    </li>
+                                  </NavLink>
+                                );
+                              })}
                           </ul>
                         </div>
                         <div className="">
@@ -124,19 +124,21 @@ const Navbar = () => {
                             <li>
                               <a href="#">For Sale</a>
                             </li>
-                            {
-                              categories?.filter((item,i)=> item.type === 'sell').map((item,i)=>{
-                                return(
-                                  <NavLink key={item._id} to={'/listing/' + item._id}>
-                                  <li key={item._id}>
-                              <img src={sellImages[i].path} alt="" />
-                              <a href="#">{item.name}</a>
-                            </li>
-                            </NavLink>
-                                )
-                              })
-                            }
-                         
+                            {categories
+                              ?.filter((item, i) => item.type === "sell")
+                              .map((item, i) => {
+                                return (
+                                  <NavLink
+                                    key={item._id}
+                                    to={"/listing/" + item._id}
+                                  >
+                                    <li key={item._id}>
+                                      <img src={sellImages[i].path} alt="" />
+                                      <a href="#">{item.name}</a>
+                                    </li>
+                                  </NavLink>
+                                );
+                              })}
                           </ul>
                         </div>
                       </div>
@@ -149,16 +151,15 @@ const Navbar = () => {
                 <li className="menu-item-has-children">
                   <NavLink to="/listing/post">Post Listing</NavLink>
                 </li>
-            
               </ul>
             </nav>
           </div>
 
           <div className="header-item-right">
-          <div className="nav-search">
-                    <input type="text" placeholder="Search.." />
-                    <bs.BsSearch className="icon" />
-                  </div>
+            <div className="nav-search">
+              <input type="text" placeholder="Search.." />
+              <bs.BsSearch className="icon" />
+            </div>
             {/* {isAuthenticated ? (
               <NavLink to={"/listing/post"}>
                 <button className="login-btn">Post Listing{isAuthenticated}</button>

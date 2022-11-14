@@ -47,13 +47,13 @@ function App() {
   const [myOwnId, setMyOwnId] = useState("");
   const [isPaid, setIsPaid] = useState(null);
   const [isAdmin, setIsAdmin] = useState(null);
-  const [expiryDate,setExpiryDate] = useState("");
-  const [packageType, setPackageType] = useState("")
+  const [expiryDate, setExpiryDate] = useState("");
+  const [packageType, setPackageType] = useState("");
   const [myListings, setMyListings] = useState([]);
   const [buyerRequests, setBuyerRequests] = useState([]);
   const memberShipRef = useRef(null);
   const memberShipScrollHandle = () => {
-    memberShipRef.current?.scrollIntoView({behavior: 'smooth'});
+    memberShipRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const Authenticate = async () => {
@@ -76,11 +76,10 @@ function App() {
         setMyOwnId(data.others._id);
         setMyListings(data.others.myListings);
         setBuyerRequests(data.others.buyerRequests);
-        if(data.others.subscription.length !== 0){
+        if (data.others.subscription.length !== 0) {
           setExpiryDate(data.others.subscription.slice(-1)[0].expiryDate);
           setPackageType(data.others.subscription.slice(-1)[0].packageType);
         }
-       
       }
     } catch (error) {
       console.log(error);
@@ -94,10 +93,21 @@ function App() {
 
   return (
     <MainContext.Provider
-      value={{ myOwnId, isPaid, isAdmin, myListings, buyerRequests,expiryDate,packageType, isAuthenticated, memberShipRef,memberShipScrollHandle}}
+      value={{
+        myOwnId,
+        isPaid,
+        isAdmin,
+        myListings,
+        buyerRequests,
+        expiryDate,
+        packageType,
+        isAuthenticated,
+        memberShipRef,
+        memberShipScrollHandle,
+      }}
     >
       <div className="App">
-          <ScrollToTop />
+        <ScrollToTop />
         <Routes>
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/login" element={<Login />} />
@@ -105,15 +115,31 @@ function App() {
           <Route exact path="/listing/post" element={<Post />} />
           <Route exact path="/mylistings" element={<MyListingPage />} />
           <Route exact path="/buyerrequests" element={<BuyerRequestPage />} />
-          <Route exact path="/approvedrequests" element={<ApprovedRequestPage />} />
+          <Route
+            exact
+            path="/approvedrequests"
+            element={<ApprovedRequestPage />}
+          />
           <Route exact path="/profile" element={<ProfilePage />} />
           <Route exact path="/payment" element={<Payment />} />
           <Route exact path="/success" element={<SuccessPayment />} />
           <Route exact path="/chat" element={<ChatPage />} />
-          <Route exact path='/auth/admin/managelisting' element={<ManageListingPage />} />
-          <Route exact path='/auth/admin/createadvisor' element={<CreateAdvisorPage />} />
+          <Route
+            exact
+            path="/auth/admin/managelisting"
+            element={<ManageListingPage />}
+          />
+          <Route
+            exact
+            path="/auth/admin/createadvisor"
+            element={<CreateAdvisorPage />}
+          />
           <Route exact path="/advisors" element={<AdvisorPage />} />
-          <Route exact path="/advisor/:advisorId" element={<AdvisorViewPage />} />
+          <Route
+            exact
+            path="/advisor/:advisorId"
+            element={<AdvisorViewPage />}
+          />
           <Route
             exact
             path="/listings/view/:listingId"
@@ -125,7 +151,7 @@ function App() {
             path="/listing/:paramsCategoryId"
             element={<BrowseListings />}
           />
-           <Route
+          <Route
             exact
             path="/post/listing/buisnessForSale/:categoryId"
             element={<BuisnessForSalePage />}
@@ -135,32 +161,32 @@ function App() {
             path="/post/listing/listingContractForSale/:categoryId"
             element={<ListingContractPage />}
           />
-           <Route
+          <Route
             exact
             path="/post/listing/propertyForSale/:categoryId"
             element={<PropertyForSalePage />}
           />
-           <Route
+          <Route
             exact
             path="/post/listing/propertyManagerServices/:categoryId"
             element={<PropertyManagerSalePage />}
           />
-            <Route
+          <Route
             exact
             path="/post/listing/buyAListingContract/:categoryId"
             element={<BuyAListingContractPage />}
           />
-           <Route
+          <Route
             exact
             path="/post/listing/buyABuisness/:categoryId"
             element={<BuyABuisnessPage />}
           />
-           <Route
+          <Route
             exact
             path="/post/listing/manageMyProperty/:categoryId"
             element={<PropertyManagerBuyPage />}
           />
-            <Route
+          <Route
             exact
             path="/post/listing/investmentNeeded/:categoryId"
             element={<InvestmentNeedPage />}
@@ -168,10 +194,14 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/sellers" element={<Sellers />} />
           <Route exact path="/buyers" element={<BuyersPage />} />
-          <Route exact path='/terms' element={<Terms />} />
-          <Route exact path='/privacy' element={<Privacy />} />
-          <Route exact path='/buyersellermnda' element={<BuyerSellerMnda />} />
-          <Route exact path='/buyersellerterms' element={<BuyerSellerTerms />} />
+          <Route exact path="/terms" element={<Terms />} />
+          <Route exact path="/privacy" element={<Privacy />} />
+          <Route exact path="/buyersellermnda" element={<BuyerSellerMnda />} />
+          <Route
+            exact
+            path="/buyersellerterms"
+            element={<BuyerSellerTerms />}
+          />
           <Route path="*" element={<NotFound404 />} />
         </Routes>
       </div>

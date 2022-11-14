@@ -11,10 +11,10 @@ const JoinSection = () => {
           Access hundreds of PMs who want to sell. Instantly. Search hundreds of
           vetted PMs to find your perfect match.
         </span>
-        <NavLink to={'/signup'}>
-        <button className="button">
-          Join Now <bs.BsArrowRight />
-        </button>
+        <NavLink to={"/signup"}>
+          <button className="button">
+            Join Now <bs.BsArrowRight />
+          </button>
         </NavLink>
       </div>
     </div>

@@ -10,49 +10,39 @@ const FilterAdvisor = () => {
   const [relevance, setRelevance] = useState(false);
   const [expertise, setExpertise] = useState(false);
   const [dealsClosed, setDealsClosed] = useState(false);
-  const {handleKeyDown, setKeyword} = useContext(sidebarContext);
+  const { handleKeyDown, setKeyword } = useContext(sidebarContext);
   return (
     <>
       <div className="filter-row filter-advisor">
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-8 filter-left">
-                  <div className="custom-select">
-                    <div onClick={()=>setRelevance(!relevance)}>
-                    <span>Sort: Relevance</span>
-                    <span>
-                      {relevance ? <bs.BsChevronUp /> : <bs.BsChevronDown />}             
-                    </span>
-                    </div>
-                    {
-                      relevance &&
-                      <SortRelevance setRelevance={setRelevance} />
-                    }
-                    
-                  </div>      
               <div className="custom-select">
-                <div onClick={()=> setExpertise(!expertise)}>
-                <span>Expertise</span>
-                <span>
-                {expertise ? <bs.BsChevronUp /> : <bs.BsChevronDown />}
-                </span>
+                <div onClick={() => setRelevance(!relevance)}>
+                  <span>Sort: Relevance</span>
+                  <span>
+                    {relevance ? <bs.BsChevronUp /> : <bs.BsChevronDown />}
+                  </span>
                 </div>
-                {
-                  expertise &&
-                  <Expertise setExpertise={setExpertise} />
-                }
+                {relevance && <SortRelevance setRelevance={setRelevance} />}
               </div>
               <div className="custom-select">
-                <div onClick={()=>setDealsClosed(!dealsClosed)}>
-                <span>Deals Closed</span>
-                <span>
-                {dealsClosed ? <bs.BsChevronUp /> : <bs.BsChevronDown />}
-                </span>
+                <div onClick={() => setExpertise(!expertise)}>
+                  <span>Expertise</span>
+                  <span>
+                    {expertise ? <bs.BsChevronUp /> : <bs.BsChevronDown />}
+                  </span>
                 </div>
-                {
-                  dealsClosed &&
-                  <DealsClosed setDealsClosed={setDealsClosed} />
-                }
+                {expertise && <Expertise setExpertise={setExpertise} />}
+              </div>
+              <div className="custom-select">
+                <div onClick={() => setDealsClosed(!dealsClosed)}>
+                  <span>Deals Closed</span>
+                  <span>
+                    {dealsClosed ? <bs.BsChevronUp /> : <bs.BsChevronDown />}
+                  </span>
+                </div>
+                {dealsClosed && <DealsClosed setDealsClosed={setDealsClosed} />}
               </div>
             </div>
             <div className="col-md-4 filter-right">

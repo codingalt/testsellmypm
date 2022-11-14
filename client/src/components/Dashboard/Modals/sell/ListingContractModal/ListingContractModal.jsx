@@ -15,11 +15,11 @@ import { sidebarContext } from "../../../contexts/SidebarContext";
 
 const ListingContractModal = (props) => {
   const [listing, setListing] = useState([]);
-  const [fromUserId,setFromUserId] = useState("");
-  const [toUserId,setToUserId] = useState("");
+  const [fromUserId, setFromUserId] = useState("");
+  const [toUserId, setToUserId] = useState("");
   const [loader, setLoader] = useState(true);
   const { isPaid, myOwnId } = useContext(MainContext);
-  const {setApprovedItem} = useContext(sidebarContext)
+  const { setApprovedItem } = useContext(sidebarContext);
 
   const toastHandle = (result, message) => {
     if (result.success) {
@@ -45,7 +45,7 @@ const ListingContractModal = (props) => {
     }
   };
 
-  const approveBuyerRequest = async()=>{
+  const approveBuyerRequest = async () => {
     setLoader(true);
     props.onHide();
     try {
@@ -58,12 +58,12 @@ const ListingContractModal = (props) => {
         body: JSON.stringify({
           approvedByUserId: toUserId,
           receivedByUserId: fromUserId,
-          listing: listing
-        })
+          listing: listing,
+        }),
       });
       const data = await res.json();
       if (data.success) {
-      toastHandle(data, "Request Accepted Successfully..");
+        toastHandle(data, "Request Accepted Successfully..");
       } else {
         toastHandle(data, data.message);
       }
@@ -71,12 +71,12 @@ const ListingContractModal = (props) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const setListingValue = () => {
     setListing(props.buyerrequest.listing);
-    setFromUserId(props.buyerrequest.fromUserId)
-    setToUserId(props.buyerrequest.toUserId)
+    setFromUserId(props.buyerrequest.fromUserId);
+    setToUserId(props.buyerrequest.toUserId);
   };
 
   useEffect(() => {
@@ -84,7 +84,7 @@ const ListingContractModal = (props) => {
   }, [props]);
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <Modal
         {...props}
         dialogClassName="modal-90w"
@@ -126,7 +126,7 @@ const ListingContractModal = (props) => {
                       <span>Location</span>
                     </div>
                     <div className="location">
-                      <div className="country" >
+                      <div className="country">
                         <ul>
                           <li>
                             <hi.HiLocationMarker />
@@ -373,7 +373,13 @@ const ListingContractModal = (props) => {
           <Button variant="secondary" onClick={props.onHide}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={()=>{approveBuyerRequest(); setApprovedItem(true);}}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              approveBuyerRequest();
+              setApprovedItem(true);
+            }}
+          >
             Accept Request
           </Button>
         </Modal.Footer>

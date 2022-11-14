@@ -37,6 +37,4 @@ if (
   });
 }
 
-app.listen(PORT, () => {
-  console.log(`Listeninig to the port ${PORT}`);
-});
+app.listen(PORT, () => {});

@@ -24,7 +24,7 @@ const BrowseAllListings = () => {
   const [wanted, setWanted] = useState([]);
   const [forSell, setForSell] = useState([]);
   const [listings, setListings] = useState([]);
-  const [keyword,setKeyword] = useState("l");
+  const [keyword, setKeyword] = useState("l");
   const { paramsCategoryId } = useParams();
   const navigate = useNavigate();
 
@@ -61,7 +61,6 @@ const BrowseAllListings = () => {
     } else {
       navigate(`/listing/${e.target.value}`);
     }
-    // setNoListing(true);
   };
 
   // get Listings By category ID
@@ -131,9 +130,9 @@ const BrowseAllListings = () => {
     }
   };
 
-  const handleSearch = (e)=>{
+  const handleSearch = (e) => {
     setKeyword(e.target.value);
-  }
+  };
 
   useEffect(() => {
     getListingsByCategory();
@@ -157,7 +156,6 @@ const BrowseAllListings = () => {
         credentials: "include",
       });
       const data = await res.json();
-      // if(data.success){
       const forSellArr = [];
       const wantedArr = [];
       data.categories
@@ -172,14 +170,13 @@ const BrowseAllListings = () => {
           wantedArr[i] = item;
         });
       setWanted(wantedArr);
-      // }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleKeyDown = event => {
-    if (event.key === 'Enter') {
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
       getListingBySearch();
     }
   };
@@ -188,11 +185,11 @@ const BrowseAllListings = () => {
     getCategories();
   }, []);
 
-  useEffect(()=>{
-    if(keyword === ""){
+  useEffect(() => {
+    if (keyword === "") {
       getAllListings();
     }
-  },[keyword])
+  }, [keyword]);
 
   return (
     <div className="browse-all-listings">
@@ -247,7 +244,12 @@ const BrowseAllListings = () => {
               </div>
               <div className="col-md-3 filter-right">
                 <div className="nav-search">
-                  <input type="text" onKeyDown={handleKeyDown} onChange={event => setKeyword(event.target.value)} placeholder="Search by Country.." />
+                  <input
+                    type="text"
+                    onKeyDown={handleKeyDown}
+                    onChange={(event) => setKeyword(event.target.value)}
+                    placeholder="Search by Country.."
+                  />
                   <bs.BsSearch className="icon" />
                 </div>
               </div>

@@ -11,11 +11,11 @@ import NotFound404 from "../../../NotFound404/NotFound404";
 
 const CreateAdvisorPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const {isAdmin} = useContext(MainContext) 
+  const { isAdmin } = useContext(MainContext);
   const navigate = useNavigate();
   const [active, setActive] = useState(true);
   const [loader, setLoader] = useState(null);
-  const sidebarRef = useRef();  
+  const sidebarRef = useRef();
   const toggleSidebar = () => {
     setActive(false);
   };
@@ -31,13 +31,12 @@ const CreateAdvisorPage = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if(!data.success){
+      if (!data.success) {
         setIsAuthenticated(false);
-        navigate('/login')
+        navigate("/login");
       }
-      setIsAuthenticated(true)
+      setIsAuthenticated(true);
       setLoader(false);
-   
     } catch (error) {
       console.log(error);
       navigate("/login");
@@ -47,7 +46,6 @@ const CreateAdvisorPage = () => {
 
   useEffect(() => {
     Authenticate();
-    console.log(isAdmin);
   }, []);
   useEffect(() => {
     const handler = (event) => {
@@ -61,31 +59,26 @@ const CreateAdvisorPage = () => {
       document.removeEventListener("mousedown", handler);
     };
   }, []);
- 
+
   return (
     <>
-    { 
-    isAdmin?
-      <sidebarContext.Provider
-      value={{ isOpen: active, toggle: toggleSidebar,sidebarRef }}
-    >
-      {/* Sidebar */}
-      {<Sidebar />}
+      {isAdmin ? (
+        <sidebarContext.Provider
+          value={{ isOpen: active, toggle: toggleSidebar, sidebarRef }}
+        >
+          {/* Sidebar */}
+          {<Sidebar />}
 
-      {/* Main Content */}
-      <main className={active ? "main" : "main main-reverse"}>
- 
-        <Navbar />
+          {/* Main Content */}
+          <main className={active ? "main" : "main main-reverse"}>
+            <Navbar />
 
-        {
-           <CreateAdvisor />
-        }
-    
-      </main>
-      
-    </sidebarContext.Provider> : ''
-    }
-
+            {<CreateAdvisor />}
+          </main>
+        </sidebarContext.Provider>
+      ) : (
+        ""
+      )}
     </>
   );
 };
