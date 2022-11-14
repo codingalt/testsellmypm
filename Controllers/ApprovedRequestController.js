@@ -62,7 +62,7 @@ const getApprovedRequests = async (req, res) => {
   try {
     const approvedRequests = await approvedRequestModel.find({
       receivedByUserId: userId,
-    });
+    }).sort({createdAt: -1});
     res.status(200).json({ approvedRequests, success: true });
   } catch (error) {
     res.status(500).json({ message: error.message, success: false });

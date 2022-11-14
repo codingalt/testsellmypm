@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Pagination from "../../Pagination/Pagination";
 import { TailSpin } from "react-loader-spinner";
 import ListingContractModal from "../Modals/sell/ListingContractModal/ListingContractModal";
+import NoBuyerRequest from "../NoBuyerRequest/NoBuyerRequest";
 
 const ApprovedListings = () => {
   const [approvedRequest, setApprovedRequest] = useState([]);
@@ -54,9 +55,12 @@ const ApprovedListings = () => {
     getApprovedRequests();
   }, []);
 
+  const title = 'You currently have no Approved Listings';
+  const subTitle = 'Sellers that accepts your requests for more info will appear here.'
+
   return (
     <div className="buyer-request">
-      {/* {approvedRequest.length === 0 && !loader && <NoBuyerRequest />} */}
+      {approvedRequest.length === 0 && !loader && <NoBuyerRequest title={title} subTitle={subTitle} />}
       <TailSpin
         height="60"
         width="60"
@@ -96,9 +100,7 @@ const ApprovedListings = () => {
                   </thead>
                   <tbody>
                     {slicedData
-                      ?.slice(0)
-                      .reverse()
-                      .map((item, i) => {
+                      ?.map((item, i) => {
                         return (
                           <tr key={item._id}>
                             <td>{i + 1}</td>

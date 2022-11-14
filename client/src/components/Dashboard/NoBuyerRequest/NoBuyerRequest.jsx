@@ -2,7 +2,7 @@ import React from "react";
 import * as fa from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-const NoBuyerRequest = () => {
+const NoBuyerRequest = ({title, subTitle}) => {
   return (
     <div className="no-listing">
       <div className="inner-box border shadow-sm">
@@ -10,11 +10,11 @@ const NoBuyerRequest = () => {
           <fa.FaListUl />
         </div>
         <div className="title">
-          <span>You Currently have no Buyer Requests</span>
+          <span>{title}</span>
         </div>
         <div className="descipt">
           <span className="text-secondary">
-            Buyers that requests your listings for info. will appear here
+            {subTitle}
           </span>
         </div>
         <div className="buttons">

@@ -214,7 +214,7 @@ const AdvisorPage = () => {
           <main className={active ? "main" : "main main-reverse"}>
             <Navbar />
 
-            <Advisors />
+            <Advisors loader={loader} />
           </main>
         </sidebarContext.Provider>
       }

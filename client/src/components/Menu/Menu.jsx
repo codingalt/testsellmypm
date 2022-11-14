@@ -88,9 +88,6 @@ const Menu = () => {
         </div>
         <div className={toggle ? "navbar-toggle nav-items" : "nav-items"}>
           <ul className="ul">
-            <NavLink to={"/dashboard"} className="dashboard-mob-item">
-              <li>Dashboard</li>
-            </NavLink>
             <NavLink to={"/sellers"}>
               <li>Sellers</li>
             </NavLink>

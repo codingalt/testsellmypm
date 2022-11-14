@@ -16,7 +16,7 @@ import ListingSkeleton from "../ListingSkeleton/ListingSkeleton";
 import MainContext from "../Context/MainContext";
 
 const BrowseAllListings = () => {
-  const { isPaid } = useContext(MainContext);
+  const { isPaid, isAuthenticated } = useContext(MainContext);
   const [categoryId, setCategoryId] = useState("");
   const [loader, setLoader] = useState(true);
   const [noListing, setNoListing] = useState(false);
@@ -272,9 +272,7 @@ const BrowseAllListings = () => {
 
         <div className="row cat-container">
           {slicedData
-            ?.slice(0)
-            .reverse()
-            .map((item, i) => {
+            ?.map((item, i) => {
               return (
                 <div key={item._id} className="card-container col-md-3 border">
                   <NavLink key={item._id} to={"/listings/view/" + item._id}>
@@ -298,7 +296,7 @@ const BrowseAllListings = () => {
                         </NavLink>
                       )}
 
-                      {isPaid ? (
+                      {isAuthenticated ? (
                         <NavLink
                           className="view-more"
                           to={"/listings/view/" + item._id}

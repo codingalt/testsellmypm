@@ -103,9 +103,7 @@ const MyListings = () => {
                   </thead>
                   <tbody>
                     {slicedData
-                      ?.slice(0)
-                      .reverse()
-                      .map((item, i) => {
+                      ?.map((item, i) => {
                         return (
                           <tr key={item._id}>
                             <td>{i + 1}</td>

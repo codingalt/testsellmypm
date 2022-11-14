@@ -55,9 +55,12 @@ const BuyerRequests = () => {
     getBuyerRequests();
   }, [approvedItem]);
 
+  const title = 'You Currently have no Buyer Requests'
+  const subTitle = 'Buyers that requests your listings for info. will appear here'
+
   return (
     <div className="buyer-request">
-      {buyerRequest.length === 0 && !loader && <NoBuyerRequest />}
+      {buyerRequest.length === 0 && !loader && <NoBuyerRequest title={title} subTitle={subTitle} />}
       <TailSpin
         height="60"
         width="60"
@@ -98,9 +101,7 @@ const BuyerRequests = () => {
                   </thead>
                   <tbody>
                     {slicedData
-                      ?.slice(0)
-                      .reverse()
-                      .map((item, i) => {
+                      ?.map((item, i) => {
                         return (
                           <tr key={item._id}>
                             <td>{i + 1}</td>

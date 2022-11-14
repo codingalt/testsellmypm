@@ -58,7 +58,7 @@ const sendBuyerRequest = async (req, res) => {
 const getBuyerRequests = async (req, res) => {
   const userId = req.userId.toString();
   try {
-    const buyerRequests = await buyerRequestModel.find({ toUserId: userId });
+    const buyerRequests = await buyerRequestModel.find({ toUserId: userId }).sort({createdAt: -1});
     res.status(200).json({ buyerRequests, success: true });
   } catch (error) {
     res.status(500).json({ message: error.message, success: false });

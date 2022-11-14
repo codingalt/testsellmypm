@@ -109,7 +109,7 @@ const createListing = async (req, res) => {
         console.log(error.message);
       }
     } else if (req.body.listType === "buisnessForSell") {
-      const buisness = new BuisnessSell(req.body);
+      
       let companyLogo = [];
       if (typeof req.body.companyLogo === "string") {
         companyLogo.push(req.body.companyLogo);
@@ -128,7 +128,68 @@ const createListing = async (req, res) => {
           url: result.secure_url,
         });
       }
-      req.body.companyLogo = companyLogoLink;
+      const {
+        listType,
+        details,
+        uniquiSellPoint,
+        incorporationDate,
+        companyAddress,
+        companyNumber,
+        website,
+        teamInformation,
+        assets,
+        ownersAndProperties,
+        baseBuisnessModal,
+        propertyOnboarding,
+        booking,
+        guests,
+        ownerReporting,
+        companyReporting,
+        marketing,
+        siteAnalysisTools,
+        metrics,
+        companyAcquisition,
+        rentalKpis,
+        propertyDetails,
+        userId,
+        categoryId,
+        images,
+        saleDetails
+
+      } = req.body;
+      const buisness = new BuisnessSell({
+        listType,
+        details,
+        uniquiSellPoint,
+        incorporationDate,
+        companyAddress,
+        companyNumber,
+        website,
+        companyLogo: {
+          public_id: companyLogoLink[0].public_id,
+          url: companyLogoLink[0].url, 
+        },
+        teamInformation,
+        assets,
+        ownersAndProperties,
+        baseBuisnessModal,
+        propertyOnboarding,
+        booking,
+        guests,
+        ownerReporting,
+        companyReporting,
+        marketing,
+        siteAnalysisTools,
+        metrics,
+        companyAcquisition,
+        rentalKpis,
+        propertyDetails,
+        userId,
+        categoryId,
+        images,
+        saleDetails
+      });
+
       try {
         const result = await buisness.save();
         res
@@ -234,7 +295,7 @@ const getListingsByCategory = async (req, res) => {
 // Get All Listings
 const getAllListings = async (req, res) => {
   try {
-    const search = new SearchListing(listingModel.find({}), req.query).search();
+    const search = new SearchListing(listingModel.find({}).sort({createdAt: -1}), req.query).search();
     const listings = await search.query;
     res.status(200).json(listings);
   } catch (error) {
@@ -246,7 +307,7 @@ const getAllListings = async (req, res) => {
 const getAllListingsAdmin = async (req, res) => {
   try {
     const search = new SearchListing(
-      listingModel.find({}),
+      listingModel.find({}).sort({createdAt: -1}),
       req.query
     ).searchByTitle();
     const listings = await search.query;
@@ -271,7 +332,7 @@ const getSingleListing = async (req, res) => {
 const getListingsByUser = async (req, res) => {
   const userId = req.userId.toString();
   try {
-    const listings = await listingModel.find({ userId: userId });
+    const listings = await listingModel.find({ userId: userId }).sort({createdAt: -1});
     res.status(200).json(listings);
   } catch (error) {
     res.status(500).json({ message: error.message, success: false });
