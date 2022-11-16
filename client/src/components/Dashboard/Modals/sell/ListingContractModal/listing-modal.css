@@ -1,0 +1,19 @@
+.true-false-div{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.true-false-div span:nth-child(1){
+    font-size: 1.1rem;
+}
+
+.true-false-div span:nth-child(2){
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+table tr td{
+    text-transform:capitalize;
+}

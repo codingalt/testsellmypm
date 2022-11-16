@@ -50,7 +50,7 @@ const PaymentModal = (props) => {
       setPkgValue(10);
     } else if (e.target.value === "yearly") {
       setPkgText("Yearly");
-      setPkgValue(99);
+      setPkgValue(100);
     } else {
       setPkgText("Monthly");
       setPkgValue(10);

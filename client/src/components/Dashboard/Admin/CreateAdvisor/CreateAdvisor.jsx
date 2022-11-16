@@ -331,7 +331,7 @@ const CreateAdvisor = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="form-group">
-                <label>Linkdin</label>
+                <label>LinkedIn</label>
                 <input
                   type="text"
                   className="form-control"

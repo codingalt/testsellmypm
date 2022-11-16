@@ -13,7 +13,7 @@ const activateSubscription = async (req, res) => {
     amount = 10;
     numerOfDays = 30;
   } else {
-    amount = 99;
+    amount = 100;
     numerOfDays = 360;
   }
   try {

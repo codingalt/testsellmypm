@@ -18,7 +18,7 @@ const AdvisorCard = ({ advisors, loader }) => {
       <div className="advisor-card shadow-sm">
         <div className="linkdin">
           <a href={advisors?.linkdin} target="_blank">
-            Linkdin
+          LinkedIn
             <fi.FiArrowUpRight />
           </a>
         </div>
