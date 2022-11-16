@@ -13,6 +13,7 @@ const multer = require("multer");
 const cloudinary = require("cloudinary");
 const SearchListing = require("../utils/search");
 const { BuisnessSell } = require("../Models/sell/BuisnessSell");
+const ListingControlModel = require("../Models/ListingControlModel");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDANIRY_CLOUD_NAME,
@@ -47,13 +48,11 @@ const createListing = async (req, res) => {
 
   try {
     if (!req.rootUser.others.isPaid) {
-      res
-        .status(401)
-        .json({
-          message:
-            "You are not a Paid Member. Please Activate a package to Advertise Your Listing",
-          success: false,
-        });
+      res.status(401).json({
+        message:
+          "You are not a Paid Member. Please Activate a package to Advertise Your Listing",
+        success: false,
+      });
       return;
     }
 
@@ -64,16 +63,26 @@ const createListing = async (req, res) => {
     const listings = await listingModel.find({
       createdAt: { $gte: createdDate, $lte: expiryDate },
     });
-    if (listings.length > 2) {
-      res
-        .status(400)
-        .json({
+    const isSpecialUser = await ListingControlModel.findOne({ userId: userId });
+    if (isSpecialUser) {
+      if (listings.length > isSpecialUser.numListing - 1) {
+        res.status(400).json({
           message:
             "You Can Add only 3 listings per month. To add more listings, Please Reactivate your Membership plan",
           success: false,
         });
-      return;
-    }
+        return;
+      } } else {
+        if (listings.length > 2) {
+          res.status(400).json({
+            message:
+              "You Can Add only 3 listings per month. To add more listings, Please Reactivate your Membership plan",
+            success: false,
+          });
+          return;
+        }
+      }
+    
 
     if (req.body.listType === "listingContractForSell") {
       const liContract = new listingContractSell(req.body);
@@ -98,18 +107,15 @@ const createListing = async (req, res) => {
       req.body.companyLogo = companyLogoLink;
       try {
         const result = await liContract.save();
-        res
-          .status(200)
-          .json({
-            result,
-            message: "Congrats! Listing Posted Successfully",
-            success: true,
-          });
+        res.status(200).json({
+          result,
+          message: "Congrats! Listing Posted Successfully",
+          success: true,
+        });
       } catch (error) {
         console.log(error.message);
       }
     } else if (req.body.listType === "buisnessForSell") {
-      
       let companyLogo = [];
       if (typeof req.body.companyLogo === "string") {
         companyLogo.push(req.body.companyLogo);
@@ -154,8 +160,7 @@ const createListing = async (req, res) => {
         userId,
         categoryId,
         images,
-        saleDetails
-
+        saleDetails,
       } = req.body;
       const buisness = new BuisnessSell({
         listType,
@@ -167,7 +172,7 @@ const createListing = async (req, res) => {
         website,
         companyLogo: {
           public_id: companyLogoLink[0].public_id,
-          url: companyLogoLink[0].url, 
+          url: companyLogoLink[0].url,
         },
         teamInformation,
         assets,
@@ -187,18 +192,16 @@ const createListing = async (req, res) => {
         userId,
         categoryId,
         images,
-        saleDetails
+        saleDetails,
       });
 
       try {
         const result = await buisness.save();
-        res
-          .status(200)
-          .json({
-            result,
-            message: "Congrats! Listing Posted Successfully",
-            success: true,
-          });
+        res.status(200).json({
+          result,
+          message: "Congrats! Listing Posted Successfully",
+          success: true,
+        });
       } catch (error) {
         console.log(error.message);
       }
@@ -206,13 +209,11 @@ const createListing = async (req, res) => {
       const property = new propertySell(req.body);
       try {
         const result = await property.save();
-        res
-          .status(200)
-          .json({
-            result,
-            message: "Congrats! Listing Posted Successfully",
-            success: true,
-          });
+        res.status(200).json({
+          result,
+          message: "Congrats! Listing Posted Successfully",
+          success: true,
+        });
       } catch (error) {
         console.log(error.message);
       }
@@ -220,13 +221,11 @@ const createListing = async (req, res) => {
       const propertySerice = new propertyManagerServices(req.body);
       try {
         const result = await propertySerice.save();
-        res
-          .status(200)
-          .json({
-            result,
-            message: "Congrats! Listing Posted Successfully",
-            success: true,
-          });
+        res.status(200).json({
+          result,
+          message: "Congrats! Listing Posted Successfully",
+          success: true,
+        });
       } catch (error) {
         console.log(error.message);
       }
@@ -237,13 +236,11 @@ const createListing = async (req, res) => {
       const buyBuisness = new buyABuisness(req.body);
       try {
         const result = await buyBuisness.save();
-        res
-          .status(200)
-          .json({
-            result,
-            message: "Congrats! Listing Posted Successfully",
-            success: true,
-          });
+        res.status(200).json({
+          result,
+          message: "Congrats! Listing Posted Successfully",
+          success: true,
+        });
       } catch (error) {
         console.log(error.message);
       }
@@ -251,13 +248,11 @@ const createListing = async (req, res) => {
       const buyListing = new buyListingContract(req.body);
       try {
         const result = await buyListing.save();
-        res
-          .status(200)
-          .json({
-            result,
-            message: "Congrats! Listing Posted Successfully",
-            success: true,
-          });
+        res.status(200).json({
+          result,
+          message: "Congrats! Listing Posted Successfully",
+          success: true,
+        });
       } catch (error) {
         console.log(error.message);
       }
@@ -265,13 +260,11 @@ const createListing = async (req, res) => {
       const hireManager = new hirePropertyManager(req.body);
       try {
         const result = await hireManager.save();
-        res
-          .status(200)
-          .json({
-            result,
-            message: "Congrats! Listing Posted Successfully",
-            success: true,
-          });
+        res.status(200).json({
+          result,
+          message: "Congrats! Listing Posted Successfully",
+          success: true,
+        });
       } catch (error) {
         console.log(error.message);
       }
@@ -295,7 +288,10 @@ const getListingsByCategory = async (req, res) => {
 // Get All Listings
 const getAllListings = async (req, res) => {
   try {
-    const search = new SearchListing(listingModel.find({}).sort({createdAt: -1}), req.query).search();
+    const search = new SearchListing(
+      listingModel.find({}).sort({ createdAt: -1 }),
+      req.query
+    ).search();
     const listings = await search.query;
     res.status(200).json(listings);
   } catch (error) {
@@ -307,7 +303,7 @@ const getAllListings = async (req, res) => {
 const getAllListingsAdmin = async (req, res) => {
   try {
     const search = new SearchListing(
-      listingModel.find({}).sort({createdAt: -1}),
+      listingModel.find({}).sort({ createdAt: -1 }),
       req.query
     ).searchByTitle();
     const listings = await search.query;
@@ -332,7 +328,9 @@ const getSingleListing = async (req, res) => {
 const getListingsByUser = async (req, res) => {
   const userId = req.userId.toString();
   try {
-    const listings = await listingModel.find({ userId: userId }).sort({createdAt: -1});
+    const listings = await listingModel
+      .find({ userId: userId })
+      .sort({ createdAt: -1 });
     res.status(200).json(listings);
   } catch (error) {
     res.status(500).json({ message: error.message, success: false });

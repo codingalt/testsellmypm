@@ -184,6 +184,27 @@ const Sidebar = ({ isAvailable }) => {
                       </p>
                     )}
                   </li>
+                  <li
+                className={pathname.match('/auth/admin/listingcontrol') ? "active-sidebar-li" : ""}
+              >
+                <NavLink to="/auth/admin/listingcontrol" className={pathname.match('/auth/admin/listingcontrol') ? "white" : ""}>
+                  <span className={pathname.match('/auth/admin/listingcontrol') ? "white" : ""}>
+                    <ai.AiOutlineFileDone
+                      style={
+                        isOpen
+                          ? { marginLeft: "0px" }
+                          : { marginLeft: "17px", fontSize: "33px" }
+                      }
+                    />
+                  </span>
+                  <span className={isOpen ? "" : "sidebar-txt"}>User Listing Control</span>
+                </NavLink>
+                {isOpen && (
+                  <p>
+                    <md.MdOutlineArrowForwardIos />{" "}
+                  </p>
+                )}
+              </li>
                 </>
               ) : (
                 <>

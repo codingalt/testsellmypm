@@ -26,6 +26,7 @@ app.use(require("./Routes/BuyerRequestsRoute"));
 app.use(require("./Routes/ApprovedRequestsRoute"));
 app.use(require("./Routes/PaymentRoute"));
 app.use(require("./Routes/AdvisorRoute"));
+app.use(require("./Routes/ListingControlRoute"));
 
 if (
   process.env.NODE_ENV === "production" ||

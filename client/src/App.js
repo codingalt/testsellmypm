@@ -40,6 +40,7 @@ import ManageListingPage from "./components/Dashboard/Admin/pages/ManageListings
 import CreateAdvisorPage from "./components/Dashboard/Admin/pages/CreateAdvisor";
 import BuyersPage from "./pages/Buyers";
 import API from "./components/axios";
+import ListingControlPage from "./components/Dashboard/Admin/pages/ListingControl";
 
 function App() {
   AOS.init();
@@ -134,6 +135,7 @@ function App() {
             path="/auth/admin/createadvisor"
             element={<CreateAdvisorPage />}
           />
+          <Route exact path='/auth/admin/listingcontrol' element={<ListingControlPage />} />
           <Route exact path="/advisors" element={<AdvisorPage />} />
           <Route
             exact

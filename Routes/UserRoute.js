@@ -6,6 +6,7 @@ const {
   logoutUser,
   getUserData,
   getTotalUsers,
+  getUsersByEmail,
 } = require("../Controllers/UserController");
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.post("/login", loginUser);
 router.get("/gettotalusers", getTotalUsers);
 router.get("/logout", logoutUser);
 router.get("/user/:userId", getUserData);
+router.post("/users/",getUsersByEmail);
 router.get("/auth", Authenticate, (req, res) => {
   res.send(req.rootUser);
 });

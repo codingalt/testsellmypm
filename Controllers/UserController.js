@@ -84,11 +84,25 @@ const loginUser = async (req, res) => {
   }
 };
 
+
+
 const getUserData = async (req, res) => {
   try {
     const userId = req.params.userId;
     const user = await UserModel.findById(userId);
     const { password, confirmPass, ...other } = user._doc;
+    res.status(200).json({ user: other, success: true });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+// Get users by email 
+const getUsersByEmail = async (req, res) => {
+  const {email} = req.body;
+  try {
+    const user = await UserModel.findOne({email: email});
+    const { password, confirmPass,tokens,subscription, ...other } = user._doc;
     res.status(200).json({ user: other, success: true });
   } catch (error) {
     res.status(500).json(error);
@@ -116,4 +130,5 @@ module.exports = {
   logoutUser,
   getUserData,
   getTotalUsers,
+  getUsersByEmail
 };
