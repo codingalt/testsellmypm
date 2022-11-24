@@ -32,7 +32,7 @@ const Login = () => {
     const { email, password } = user;
 
     setLoader(true);
-    const res = await fetch(`/login`, {
+    const res = await fetch(`${process.env.REACT_APP_URI}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
