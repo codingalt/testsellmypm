@@ -31,7 +31,7 @@ const registerUser = async (req, res) => {
         .status(422)
         .json({ message: "Email already exist", success: false });
     }
-    const user = new UserModel({ name, email, password, confirmPass, terms });
+    const user = new UserModel({ name, email, password, terms });
     const userRegister = await user.save();
     if (userRegister) {
       res

@@ -28,6 +28,8 @@ const BrowseAllListings = () => {
   const { paramsCategoryId } = useParams();
   const navigate = useNavigate();
 
+  console.log(process.env.REACT_APP_URI);
+
   // Pagination
   const itemsPerPage = 16;
   const [pageNumber, setPageNumber] = useState(0);
@@ -71,7 +73,7 @@ const BrowseAllListings = () => {
     changePage(select);
     setLoader(true);
     try {
-      const res = await fetch(`/listings/${paramsCategoryId}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listings/${paramsCategoryId}`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -95,7 +97,7 @@ const BrowseAllListings = () => {
   const getAllListings = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/listings/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listings/`, {
         method: "GET",
         headers: {
           Accept: "application/json",

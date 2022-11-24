@@ -48,9 +48,7 @@ const Listings = () => {
           <h2 className="section-title">Latest Listings</h2>
         </div>
         <div className="row cat-container custom-cat-container">
-          {listings
-            ?.filter((val, index, arr) => index > arr.length - 7)
-            .map((item, i) => {
+          {listings?.slice(0,6).map((item, i) => {
               return (
                 <div key={item._id} className="card-container border">
                   <NavLink key={item._id} to={"/listings/view/" + item._id}>
