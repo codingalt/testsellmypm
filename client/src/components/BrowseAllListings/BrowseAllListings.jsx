@@ -28,8 +28,6 @@ const BrowseAllListings = () => {
   const { paramsCategoryId } = useParams();
   const navigate = useNavigate();
 
-  console.log(process.env.REACT_APP_URI);
-
   // Pagination
   const itemsPerPage = 16;
   const [pageNumber, setPageNumber] = useState(0);
