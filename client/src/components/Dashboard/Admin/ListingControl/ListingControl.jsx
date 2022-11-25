@@ -43,7 +43,7 @@ const ListingControl = () => {
     }
     setLoader(true);
     try {
-      const res = await fetch(`/users/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/users/`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -72,7 +72,7 @@ const ListingControl = () => {
   const increaseListing = async(numListing)=>{
     setModalShow(false);
     try {
-      const res = await fetch(`/listingcontrol/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listingcontrol/`, {
         method: "POST",
         headers: {
           Accept: "application/json",

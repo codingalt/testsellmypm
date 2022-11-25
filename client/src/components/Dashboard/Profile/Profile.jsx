@@ -4,20 +4,62 @@ import { TailSpin } from "react-loader-spinner";
 import company from "../../../images/logotext.png";
 import { useContext } from "react";
 import MainContext from "../../Context/MainContext";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import PaymentModal from '../Modals/PaymentModal/PaymentModal'
 
 const Profile = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [profile, setProfile] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [myListings, setMyListings] = useState([]);
   const [loader, setLoader] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
   const [totalBuyerRequest, setTotalBuyerRequest] = useState(null);
   const { expiryDate, packageType } = useContext(MainContext);
   const updatedDate = new Date(expiryDate).toDateString();
+  const navigate = useNavigate();
+
+  const toastHandle = (result, message) => {
+    if (result) {
+      toast.success(message, {
+        position: "top-right",
+        autoClose: 6000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.error(message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
+  const handleAuth = () => {
+    if (!isAuthenticated) {
+      setModalShow(false);
+      toastHandle(
+        false,
+        "You are not logged in! Please login first or signup if you don't have an account"
+      );
+      navigate("/login");
+    } else {
+      setModalShow(true);
+    }
+  };
 
   const getBuyerRequests = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/buyerrequests/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/buyerrequests/`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -39,7 +81,7 @@ const Profile = () => {
   const Authenticate = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/auth`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/auth`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -65,7 +107,7 @@ const Profile = () => {
   const getListingsByUser = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/mylistings/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/mylistings/`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -92,6 +134,7 @@ const Profile = () => {
 
   return (
     <div className="profile">
+      <ToastContainer />
       <TailSpin
         height="60"
         width="60"
@@ -102,8 +145,10 @@ const Profile = () => {
         wrapperClass="loader_wrapper2"
         visible={loader}
       />
+      <PaymentModal show={modalShow} onHide={() => setModalShow(false)} />
       {!loader && (
         <div className="card px-4 py-3 border shadow-sm">
+          <div className="profile-upgrade-wrap">
           <div className="profile-img">
             <div className="p-img">
               <img src={company} alt="" />
@@ -111,6 +156,10 @@ const Profile = () => {
             <div className="name">
               <span>Sell My PM</span>
               <span>#1 Property Manager MarketPlace</span>
+            </div>
+          </div>
+          <div className="package-activate">
+              <button onClick={handleAuth} className="button">Upgrade Membership</button>
             </div>
           </div>
           <div className="detail-title">

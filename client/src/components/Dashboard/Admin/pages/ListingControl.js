@@ -45,7 +45,7 @@ const ListingControlPage = () => {
   const deleteListing = async(item)=>{
     setLoader(true);
     try {
-      const res = await fetch(`/listing/${item._id}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listing/${item._id}`, {
         method: "DELETE",
         headers: {
           Accept: "application/json",

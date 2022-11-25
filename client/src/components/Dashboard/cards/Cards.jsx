@@ -22,7 +22,7 @@ const Cards = () => {
   const getListingsByUser = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/mylistings/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/mylistings/`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -45,7 +45,7 @@ const Cards = () => {
   const getAllListings = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/listings/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listings/`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -63,7 +63,7 @@ const Cards = () => {
   const getBuyerRequests = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/buyerrequests/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/buyerrequests/`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -85,7 +85,7 @@ const Cards = () => {
   const getApprovedRequests = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/approvedrequests/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/approvedrequests/`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -108,7 +108,7 @@ const Cards = () => {
   const getTotalUsers = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/gettotalusers/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/gettotalusers/`, {
         method: "GET",
         headers: {
           Accept: "application/json",

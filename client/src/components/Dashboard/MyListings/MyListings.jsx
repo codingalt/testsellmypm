@@ -31,7 +31,7 @@ const MyListings = () => {
   const getListingsByUser = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/mylistings/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/mylistings/`, {
         method: "GET",
         headers: {
           Accept: "application/json",

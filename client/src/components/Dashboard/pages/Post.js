@@ -19,7 +19,7 @@ const Post = () => {
   const Authenticate = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/auth`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/auth`, {
         method: "GET",
         headers: {
           Accept: "application/json",

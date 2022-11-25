@@ -56,7 +56,7 @@ const ListingView = ({ listingId }) => {
   const getSingleListing = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/listings/${listingId}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listings/${listingId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -82,7 +82,7 @@ const ListingView = ({ listingId }) => {
     }
     setLoader(true);
     try {
-      const res = await fetch(`/buyerrequest/create`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/buyerrequest/create`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -119,7 +119,7 @@ const ListingView = ({ listingId }) => {
       return;
     }
     try {
-      const res = await fetch(`/chat/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/chat/`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -145,7 +145,7 @@ const ListingView = ({ listingId }) => {
 
   const sendMessage = async (chatId) => {
     try {
-      const res = await fetch(`/message`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/message`, {
         method: "POST",
         headers: {
           Accept: "application/json",

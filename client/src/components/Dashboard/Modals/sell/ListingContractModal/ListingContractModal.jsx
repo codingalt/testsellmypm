@@ -50,7 +50,7 @@ const ListingContractModal = (props) => {
     setLoader(true);
     props.onHide();
     try {
-      const res = await fetch(`/buyerrequest/accept`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/buyerrequest/accept`, {
         method: "POST",
         headers: {
           Accept: "application/json",

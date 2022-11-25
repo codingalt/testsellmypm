@@ -33,7 +33,7 @@ const ChatBody = ({ chat, currentUserId, setSendMessage, receiveMessage }) => {
 
   const getUserData = async (userId) => {
     try {
-      const res = await fetch(`/user/${userId}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/user/${userId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -61,7 +61,7 @@ const ChatBody = ({ chat, currentUserId, setSendMessage, receiveMessage }) => {
   // get Messages
   const getMessages = async (id) => {
     try {
-      const res = await fetch(`/message/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/message/${id}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -83,7 +83,7 @@ const ChatBody = ({ chat, currentUserId, setSendMessage, receiveMessage }) => {
   // Send Message to database
   const sendNewMessage = async (message) => {
     setLoader(true);
-    const res = await fetch(`/message/`, {
+    const res = await fetch(`${process.env.REACT_APP_URI}/message/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

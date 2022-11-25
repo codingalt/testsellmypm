@@ -25,7 +25,7 @@ const SelectCategory = () => {
     setCategoryId(e.target.value);
     const getCategoryById = async () => {
       try {
-        const res = await fetch(`/categories/${e.target.value}`, {
+        const res = await fetch(`${process.env.REACT_APP_URI}/categories/${e.target.value}`, {
           method: "GET",
           headers: {
             Accept: "application/json",
@@ -45,7 +45,7 @@ const SelectCategory = () => {
   // get All categories
   const getCategories = async () => {
     try {
-      const res = await fetch(`/categories`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/categories`, {
         method: "GET",
         headers: {
           Accept: "application/json",

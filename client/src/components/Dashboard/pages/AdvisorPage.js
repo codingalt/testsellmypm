@@ -29,7 +29,7 @@ const AdvisorPage = () => {
 
   const getAdvisors = async () => {
     setLoader(true);
-    const res = await fetch(`/advisors/`, {
+    const res = await fetch(`${process.env.REACT_APP_URI}/advisors/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const AdvisorPage = () => {
       return;
     }
     setLoader(true);
-    const res = await fetch(`/advisors/?keyword=${keyword}`, {
+    const res = await fetch(`${process.env.REACT_APP_URI}/advisors/?keyword=${keyword}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +75,7 @@ const AdvisorPage = () => {
   const Authenticate = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/auth`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/auth`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -116,7 +116,7 @@ const AdvisorPage = () => {
   const getRelevantAdvisors = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/advisors/relevant/${sortRelevance}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/advisors/relevant/${sortRelevance}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -137,7 +137,7 @@ const AdvisorPage = () => {
   const sortByExpertise = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/advisors/sortbyexpertise/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/advisors/sortbyexpertise/`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -161,7 +161,7 @@ const AdvisorPage = () => {
   const sortByDealsClosed = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/advisors/sortbydeals/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/advisors/sortbydeals/`, {
         method: "POST",
         headers: {
           Accept: "application/json",

@@ -22,7 +22,7 @@ const Listings = () => {
   // get All Listings
   const getAllListings = async () => {
     try {
-      const res = await fetch(`/listings/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listings/`, {
         method: "GET",
         headers: {
           Accept: "application/json",

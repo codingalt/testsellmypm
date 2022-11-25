@@ -32,7 +32,7 @@ const ApprovedListings = () => {
   const getApprovedRequests = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/approvedrequests/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/approvedrequests/`, {
         method: "GET",
         headers: {
           Accept: "application/json",

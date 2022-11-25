@@ -32,7 +32,7 @@ const BuyerRequests = () => {
   const getBuyerRequests = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/buyerrequests/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/buyerrequests/`, {
         method: "GET",
         headers: {
           Accept: "application/json",

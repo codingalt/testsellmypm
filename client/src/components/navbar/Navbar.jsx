@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const Authenticate = async () => {
     try {
-      const res = await fetch(`/auth`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/auth`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -42,7 +42,7 @@ const Navbar = () => {
 
   const getCategories = async () => {
     try {
-      const res = await fetch(`/categories`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/categories`, {
         method: "GET",
         headers: {
           Accept: "application/json",

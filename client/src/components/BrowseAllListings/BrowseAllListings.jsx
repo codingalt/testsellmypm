@@ -117,7 +117,7 @@ const BrowseAllListings = () => {
     setLoader(true);
     setPageNumber(0);
     try {
-      const res = await fetch(`/listings/?keyword=${keyword}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listings/?keyword=${keyword}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -149,7 +149,7 @@ const BrowseAllListings = () => {
   // get All categories
   const getCategories = async () => {
     try {
-      const res = await fetch(`/categories`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/categories`, {
         method: "GET",
         headers: {
           Accept: "application/json",

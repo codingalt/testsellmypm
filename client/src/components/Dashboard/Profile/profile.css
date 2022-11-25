@@ -6,11 +6,27 @@
 
 .profile .profile-img{
     width: 100%;
-    margin: 1rem 1rem;
-    margin-bottom: 1.5rem;
     display: flex;
     gap: 2rem;
     align-items: center;
+}
+
+.profile-upgrade-wrap{
+    width: 100%;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-upgrade-wrap .package-activate{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-upgrade-wrap .package-activate>button{
+    padding: 16px 14px;
 }
 
 .profile-img .name{
@@ -80,5 +96,13 @@
     .profile-img .p-img{  
         width: 6.4rem;
         height: 4.9rem;
+    }
+    .profile-upgrade-wrap{
+       flex-direction: column;
+    }
+    .profile-upgrade-wrap .package-activate{
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 2rem;
     }
 }

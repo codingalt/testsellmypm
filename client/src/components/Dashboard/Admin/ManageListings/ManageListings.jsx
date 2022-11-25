@@ -36,7 +36,7 @@ const ManageListings = () => {
   const getAllListings = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/listingsadmin/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listingsadmin/`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -59,7 +59,7 @@ const ManageListings = () => {
     setPageNumber(0);
     setLoader(true);
     try {
-      const res = await fetch(`/listingsadmin/?keyword=${keyword}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listingsadmin/?keyword=${keyword}`, {
         method: "GET",
         headers: {
           Accept: "application/json",

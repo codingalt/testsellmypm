@@ -50,7 +50,7 @@ const EditListingModel = (props) => {
     onSubmit: (values) => {
       const updateData = async () => {
         setLoader(true);
-        const res = await fetch(`/listing/${props.listing._id}`, {
+        const res = await fetch(`${process.env.REACT_APP_URI}/listing/${props.listing._id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

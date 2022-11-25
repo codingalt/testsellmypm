@@ -380,7 +380,7 @@ const BuisnessForSale = () => {
     onSubmit: (values) => {
       const postData = async () => {
         setLoader(true);
-        const res = await fetch(`/listing/create`, {
+        const res = await fetch(`${process.env.REACT_APP_URI}/listing/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

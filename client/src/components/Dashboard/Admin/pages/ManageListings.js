@@ -44,7 +44,7 @@ const ManageListingPage = () => {
   const deleteListing = async (item) => {
     setLoader(true);
     try {
-      const res = await fetch(`/listing/${item._id}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/listing/${item._id}`, {
         method: "DELETE",
         headers: {
           Accept: "application/json",
@@ -79,7 +79,7 @@ const ManageListingPage = () => {
   const Authenticate = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/auth`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/auth`, {
         method: "GET",
         headers: {
           Accept: "application/json",

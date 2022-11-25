@@ -30,7 +30,7 @@ const Sidebar2 = ({ isAvailable }) => {
 
   const logoutUser = async () => {
     try {
-      const res = await fetch(`/logout`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/logout`, {
         method: "GET",
         headers: {
           Accept: "application/json",

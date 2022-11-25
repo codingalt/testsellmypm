@@ -49,7 +49,7 @@ const CreateAdvisor = () => {
     onSubmit: (values) => {
       const postData = async () => {
         setLoader(true);
-        const res = await fetch(`/advisor/create`, {
+        const res = await fetch(`${process.env.REACT_APP_URI}/advisor/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

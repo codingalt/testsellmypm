@@ -44,7 +44,7 @@ const Chat = () => {
   const getMessages = async (id) => {
     setLoader(true);
     try {
-      const res = await fetch(`/message/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/message/${id}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -97,7 +97,7 @@ const Chat = () => {
   const getChats = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/chat/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/chat/`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -146,7 +146,7 @@ const Chat = () => {
 
   const messageSeen = async (chat) => {
     try {
-      const res = await fetch(`/messageseen/${chat._id}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/messageseen/${chat._id}`, {
         method: "GET",
         headers: {
           Accept: "application/json",

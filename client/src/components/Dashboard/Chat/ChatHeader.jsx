@@ -17,7 +17,7 @@ const ChatHeader = ({
   const getUserData = async (userId) => {
     setLoader(true);
     try {
-      const res = await fetch(`/user/${userId}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/user/${userId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -39,7 +39,7 @@ const ChatHeader = ({
   const getAdvisorData = async (userId) => {
     setLoader(true);
     try {
-      const res = await fetch(`/advisors/${userId}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/advisors/${userId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",

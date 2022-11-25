@@ -35,7 +35,7 @@ const AdvisorView = () => {
       return;
     }
     try {
-      const res = await fetch(`/chat/`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/chat/`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -61,7 +61,7 @@ const AdvisorView = () => {
 
   const sendMessage = async (chatId) => {
     try {
-      const res = await fetch(`/message`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/message`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -90,7 +90,7 @@ const AdvisorView = () => {
   const getAdvisor = async () => {
     setLoader(true);
     try {
-      const res = await fetch(`/advisors/${advisorId}`, {
+      const res = await fetch(`${process.env.REACT_APP_URI}/advisors/${advisorId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
