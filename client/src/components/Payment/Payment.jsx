@@ -6,7 +6,7 @@ import axios from "axios";
 const Payment = (token) => {
   const handleToken = async (token) => {
     try {
-      const res = await axios.post(`/payment`, {
+      const res = await axios.post(`${process.env.REACT_APP_URI}/payment`, {
         token: token.id,
         packageType: "monthly",
       });
