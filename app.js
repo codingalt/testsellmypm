@@ -9,12 +9,21 @@ require("./conn");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const path = require("path");
+const http = require('http')
+const server = http.createServer(app)
+const {Server} = require("socket.io");
+const io = new Server(server);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-
 app.use(cookieParser());
-app.use(cors());
+
+const corsOptions = {
+  origin: true, 
+  credentials: true, 
+};
+
+app.use(cors(corsOptions));
 
 // Linking Router
 app.use(require("./Routes/UserRoute"));
@@ -39,3 +48,35 @@ if (
 }
 
 app.listen(PORT, () => {});
+
+let activeUsers = [];
+
+io.on("connection", (socket) => {
+  // add new user
+  console.log('connection is ready');
+  socket.on("new-user-add", (newUserId) => {
+    // if user is not added previously
+    if (!activeUsers.some((user) => user.userId === newUserId)) {
+      activeUsers.push({
+        userId: newUserId,
+        socketId: socket.id,
+      });
+    }
+    io.emit("get-users", activeUsers);
+  });
+
+  // Send Message
+  socket.on("send-message", (data) => {
+    const { receiverId } = data;
+    const user = activeUsers.find((user) => user.userId === receiverId);
+    if (user) {
+      io.to(user.socketId).emit("receive-message", data);
+    }
+  });
+
+  socket.on("disconnect", () => {
+    activeUsers = activeUsers.filter((user) => user.socketId !== socket.id);
+    io.emit("get-users", activeUsers);
+  });
+});
+

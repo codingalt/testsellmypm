@@ -78,7 +78,7 @@ const Chat = () => {
   }, [sendMessage]);
 
   useEffect(() => {
-    socket.current = io("http://localhost:8800");
+    socket.current = io(process.env.REACT_APP_URI);
     if (myOwnId) {
       socket.current.emit("new-user-add", myOwnId);
     }

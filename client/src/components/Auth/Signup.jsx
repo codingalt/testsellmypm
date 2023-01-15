@@ -37,6 +37,7 @@ const Signup = () => {
     setLoader(true);
     const res = await fetch(`${process.env.REACT_APP_URI}/register`, {
       method: "POST",
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
       },

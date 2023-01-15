@@ -34,9 +34,10 @@ const Login = () => {
     setLoader(true);
     const res = await fetch(`${process.env.REACT_APP_URI}/login`, {
       method: "POST",
-      headers: {
+      credentials: 'include',
+      headers: new Headers({
         "Content-Type": "application/json",
-      },
+      }),
       body: JSON.stringify({
         email,
         password,
@@ -48,6 +49,7 @@ const Login = () => {
       setErrorMsg(data.message);
       setError(true);
     } else {
+      localStorage.setItem("jwtoken", data.token);
       navigate(`/dashboard`);
       window.location.reload(false);
     }

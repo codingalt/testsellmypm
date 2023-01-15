@@ -24,10 +24,11 @@ const Cards = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/mylistings/`, {
         method: "GET",
-        headers: {
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (data.length !== 0) {
@@ -47,10 +48,11 @@ const Cards = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/listings/`, {
         method: "GET",
-        headers: {
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       setTotalListing(data.length);
@@ -65,10 +67,11 @@ const Cards = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/buyerrequests/`, {
         method: "GET",
-        headers: {
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (data.length !== 0) {
@@ -87,10 +90,11 @@ const Cards = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/approvedrequests/`, {
         method: "GET",
-        headers: {
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (data.success) {
@@ -110,10 +114,11 @@ const Cards = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/gettotalusers/`, {
         method: "GET",
-        headers: {
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (data.success) {

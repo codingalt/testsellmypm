@@ -63,7 +63,7 @@ const loginUser = async (req, res) => {
           expires: new Date(Date.now() + 2592000000),
           httpOnly: true,
         });
-        res.status(200).json({ message: "Login Successfully", success: true });
+        res.status(200).json({ message: "Login Successfully", success: true,token: token });
       } else {
         res
           .status(400)
