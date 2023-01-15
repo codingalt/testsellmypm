@@ -49,6 +49,8 @@ if (
 
 app.listen(PORT, () => {});
 
+
+// Socketio Code Starts 
 let activeUsers = [];
 
 io.on("connection", (socket) => {

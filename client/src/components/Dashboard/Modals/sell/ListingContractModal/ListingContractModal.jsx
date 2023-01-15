@@ -52,10 +52,12 @@ const ListingContractModal = (props) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/buyerrequest/accept`, {
         method: "POST",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         body: JSON.stringify({
           approvedByUserId: toUserId,
           receivedByUserId: fromUserId,

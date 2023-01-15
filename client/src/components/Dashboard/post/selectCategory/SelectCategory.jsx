@@ -27,10 +27,11 @@ const SelectCategory = () => {
       try {
         const res = await fetch(`${process.env.REACT_APP_URI}/categories/${e.target.value}`, {
           method: "GET",
-          headers: {
+          headers: new Headers({
             Accept: "application/json",
             "Content-Type": "application/json",
-          },
+            Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+          }),
           credentials: "include",
         });
         const data = await res.json();
@@ -47,10 +48,11 @@ const SelectCategory = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/categories`, {
         method: "GET",
-        headers: {
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         credentials: "include",
       });
       const data = await res.json();

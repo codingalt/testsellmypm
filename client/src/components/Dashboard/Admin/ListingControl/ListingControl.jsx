@@ -45,10 +45,12 @@ const ListingControl = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/users/`, {
         method: "POST",
-        headers: {
+        credentials: 'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         body: JSON.stringify({
           email: keyword,
         }),
@@ -74,10 +76,12 @@ const ListingControl = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/listingcontrol/`, {
         method: "POST",
-        headers: {
+        credentials: 'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         body: JSON.stringify({
           userId: userData?._id,
           numListing: numListing

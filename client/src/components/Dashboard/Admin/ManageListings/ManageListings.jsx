@@ -38,10 +38,12 @@ const ManageListings = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/listingsadmin/`, {
         method: "GET",
-        headers: {
+        credentials: 'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       setAllListings(data);
@@ -61,10 +63,12 @@ const ManageListings = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/listingsadmin/?keyword=${keyword}`, {
         method: "GET",
-        headers: {
+        credentials: 'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       setAllListings(data);

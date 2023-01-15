@@ -31,9 +31,11 @@ const AdvisorPage = () => {
     setLoader(true);
     const res = await fetch(`${process.env.REACT_APP_URI}/advisors/`, {
       method: "GET",
-      headers: {
+      credentials:'include',
+      headers: new Headers({
         "Content-Type": "application/json",
-      },
+        Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+      }),
     });
     const data = await res.json();
     if (data.success) {
@@ -49,9 +51,11 @@ const AdvisorPage = () => {
     setLoader(true);
     const res = await fetch(`${process.env.REACT_APP_URI}/advisors/?keyword=${keyword}`, {
       method: "GET",
-      headers: {
+      credentials:'include',
+      headers: new Headers({
         "Content-Type": "application/json",
-      },
+        Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+      }),
     });
     const data = await res.json();
     if (data.success) {
@@ -77,11 +81,12 @@ const AdvisorPage = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/auth`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
-        credentials: "include",
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (!data.success) {
@@ -118,11 +123,12 @@ const AdvisorPage = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/advisors/relevant/${sortRelevance}`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
-        credentials: "include",
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (data.success) {
@@ -139,11 +145,12 @@ const AdvisorPage = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/advisors/sortbyexpertise/`, {
         method: "POST",
-        headers: {
+        credentials: "include",
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
-        credentials: "include",
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         body: JSON.stringify({
           expertise: sortExpertise,
         }),
@@ -163,11 +170,12 @@ const AdvisorPage = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/advisors/sortbydeals/`, {
         method: "POST",
-        headers: {
+        credentials: "include",
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
-        credentials: "include",
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         body: JSON.stringify({
           lessThan: lessThan,
           greaterThan: greaterThan,

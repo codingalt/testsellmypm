@@ -46,10 +46,12 @@ const Chat = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/message/${id}`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       const currentDate = new Date();
@@ -99,10 +101,12 @@ const Chat = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/chat/`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (data.length !== 0) {
@@ -148,10 +152,12 @@ const Chat = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/messageseen/${chat._id}`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
     } catch (error) {

@@ -19,10 +19,12 @@ const ChatHeader = ({
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/user/${userId}`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (data.length !== 0) {
@@ -41,10 +43,12 @@ const ChatHeader = ({
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/advisors/${userId}`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (data.length !== 0) {

@@ -62,9 +62,11 @@ const BuyAListingContract = () => {
         setLoader(true);
         const res = await fetch(`${process.env.REACT_APP_URI}/listing/create`, {
           method: "POST",
-          headers: {
+          credentials:'include',
+          headers: new Headers({
             "Content-Type": "application/json",
-          },
+            Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+          }),
           body: JSON.stringify(values, null, 2),
         });
         const data = await res.json();

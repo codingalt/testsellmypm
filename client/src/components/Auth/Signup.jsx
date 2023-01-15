@@ -38,9 +38,9 @@ const Signup = () => {
     const res = await fetch(`${process.env.REACT_APP_URI}/register`, {
       method: "POST",
       credentials: 'include',
-      headers: {
+      headers: new Headers({
         "Content-Type": "application/json",
-      },
+      }),
       body: JSON.stringify({
         name,
         email,

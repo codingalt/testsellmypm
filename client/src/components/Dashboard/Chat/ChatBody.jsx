@@ -35,10 +35,12 @@ const ChatBody = ({ chat, currentUserId, setSendMessage, receiveMessage }) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/user/${userId}`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (data.length !== 0) {
@@ -63,10 +65,12 @@ const ChatBody = ({ chat, currentUserId, setSendMessage, receiveMessage }) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/message/${id}`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       setUpdateMessage(!updateMessage);
@@ -85,9 +89,11 @@ const ChatBody = ({ chat, currentUserId, setSendMessage, receiveMessage }) => {
     setLoader(true);
     const res = await fetch(`${process.env.REACT_APP_URI}/message/`, {
       method: "POST",
-      headers: {
+      credentials:'include',
+      headers: new Headers({
         "Content-Type": "application/json",
-      },
+        Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+      }),
       body: JSON.stringify(message),
     });
     const data = await res.json();

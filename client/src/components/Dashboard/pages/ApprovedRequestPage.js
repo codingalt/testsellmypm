@@ -20,11 +20,12 @@ const ApprovedRequestPage = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/auth`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
-        credentials: "include",
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       if (!data.success) {

@@ -24,10 +24,11 @@ const CreateAdvisorPage = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/auth`, {
         method: "GET",
-        headers: {
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         credentials: "include",
       });
       const data = await res.json();

@@ -58,10 +58,12 @@ const ListingView = ({ listingId }) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/listings/${listingId}`, {
         method: "GET",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
       });
       const data = await res.json();
       setListing([data]);
@@ -84,10 +86,12 @@ const ListingView = ({ listingId }) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/buyerrequest/create`, {
         method: "POST",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         body: JSON.stringify({
           fromUserId: myOwnId,
           toUserId: listing[0].userId,
@@ -121,10 +125,12 @@ const ListingView = ({ listingId }) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/chat/`, {
         method: "POST",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         body: JSON.stringify({
           senderId: myOwnId,
           receiverId: listing[0].userId,
@@ -147,10 +153,12 @@ const ListingView = ({ listingId }) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/message`, {
         method: "POST",
-        headers: {
+        credentials:'include',
+        headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+        }),
         body: JSON.stringify({
           senderId: myOwnId,
           chatId: chatId,
