@@ -61,6 +61,7 @@ function App() {
     try {
       const res = await fetch(`${process.env.REACT_APP_URI}/auth`, {
         method: "GET",
+        credentials:'include',
         headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -91,6 +92,7 @@ function App() {
 
   useEffect(() => {
     Authenticate();
+    console.log(process.env.REACT_APP_URI);
   }, []);
 
   return (
