@@ -30,21 +30,25 @@ const Sidebar2 = ({ isAvailable }) => {
 
   const logoutUser = async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_URI}/logout`, {
-        method: "GET",
-        headers: new Headers({
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
-        }),
-        credentials: "include",
-      });
-      const data = await res.json();
-      if (data.success) {
-        navigate("/");
-        window.location.reload(false);
-        setIsAuthenticated(false);
-      }
+      localStorage.removeItem('jwtoken');
+      navigate('/');
+      window.location.reload(false);
+      setIsAuthenticated(false);
+      // const res = await fetch(`${process.env.REACT_APP_URI}/logout`, {
+      //   method: "GET",
+      //   headers: new Headers({
+      //     Accept: "application/json",
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+      //   }),
+      //   credentials: "include",
+      // });
+      // const data = await res.json();
+      // if (data.success) {
+      //   navigate("/");
+      //   window.location.reload(false);
+      //   setIsAuthenticated(false);
+      // }
     } catch (error) {
       navigate("/login");
       setIsAuthenticated(false);

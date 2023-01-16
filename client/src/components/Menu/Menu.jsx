@@ -33,7 +33,7 @@ const Menu = () => {
         headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+          Authorization: `Bearer ${localStorage.getItem("jwtoken")}`,
         }),
         credentials: "include",
       });
@@ -58,7 +58,7 @@ const Menu = () => {
         headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+          Authorization: `Bearer ${localStorage.getItem("jwtoken")}`,
         }),
         credentials: "include",
       });
@@ -69,6 +69,12 @@ const Menu = () => {
     } catch (error) {
       setCategories([]);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwtoken");
+    window.location.reload(false);
+    setIsAuthenticated(false);
   };
 
   useEffect(() => {
@@ -175,14 +181,29 @@ const Menu = () => {
         {/* Right Side  */}
         <div className="right">
           <div className="menu_right">
-            <a to={""} onClick={handleAuthenticate}>
-              Login
-            </a>
-            <NavLink to={"/signup"}>
-              <button className="button2">
-                Join Now <bs.BsArrowRight />
-              </button>
-            </NavLink>
+            {isAuthenticated ? (
+              <a to={""} onClick={handleLogout}>
+                Logout
+              </a>
+            ) : (
+              <a to={""} onClick={handleAuthenticate}>
+                Login
+              </a>
+            )}
+
+            {isAuthenticated ? (
+              <NavLink to={"/dashboard"}>
+                <button className="button2">
+                  Dashboard <bs.BsArrowRight />
+                </button>
+              </NavLink>
+            ) : (
+              <NavLink to={"/signup"}>
+                <button className="button2">
+                  Join Now <bs.BsArrowRight />
+                </button>
+              </NavLink>
+            )}
           </div>
           <div className="toggle" onClick={toggleNavbar}>
             <fa.FaBars />
