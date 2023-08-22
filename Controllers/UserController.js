@@ -12,8 +12,9 @@ router.use(cookieParser());
 //Registeration Route
 const registerUser = async (req, res) => {
   try {
+    console.log(req.body);
     const { name, email, password, confirmPass, terms } = req.body;
-    if (!name || !email || !password || !confirmPass || !terms) {
+    if (!name || !email || !password || !terms) {
       return res
         .status(422)
         .json({ message: "Please fill out the fileds..", success: false });

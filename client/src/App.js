@@ -91,7 +91,6 @@ function App() {
 
   useEffect(() => {
     Authenticate();
-    console.log(process.env.REACT_APP_URI);
   }, []);
 
   return (

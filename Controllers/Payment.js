@@ -19,7 +19,7 @@ const activateSubscription = async (req, res) => {
   try {
     const customer = await stripe.customers.create({
       email: token.email,
-      source: token,
+      source: token?.id,
     });
 
     const idempotencyKey = uuid();
@@ -84,6 +84,7 @@ const activateSubscription = async (req, res) => {
       .status(200)
       .json({
         message: "Congrats! Your Premium Subscription Activated Successfully",
+        success: true,
       });
   } catch (error) {
     res.status(500).json({ message: error.message, success: false });

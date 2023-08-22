@@ -3,7 +3,6 @@ const UserModel = require("../Models/UserModel");
 
 const Authenticate = async (req, res, next) => {
   try {
-    const token = req.cookies.jwtoken;
     const bearerToken = req.headers['authorization'];
     if(typeof bearerToken !== 'undefined'){
       const bearer = bearerToken.split(' ');
@@ -22,7 +21,6 @@ const Authenticate = async (req, res, next) => {
     req.token = jwtToken;
     req.rootUser = { others, success: true };
     req.userId = rootUser._id;
-  
 
     if (others.subscription.length !== 0) {
       const expiryDate = others.subscription.slice(-1)[0].expiryDate;

@@ -61,22 +61,46 @@ const PaymentModal = (props) => {
     props.onHide();
     setLoader(true);
     try {
-      const res = await axios.post(`/payment`, {
-        token: token.id,
-        packageType: packageType,
+      const res = await fetch(`${process.env.REACT_APP_URI}/payment`, {
+        method: "POST",
+        body: JSON.stringify({ token, packageType: packageType }),
+        headers: new Headers({
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwtoken")}`,
+        }),
       });
-      if (res.status === 200) {
+      const data = await res.json();
+      console.log('Payment',data);
+      if(data.success){
         props.onHide();
-        toastHandle(
-          true,
-          "Congrats! Your Premium Subscription Activated Successfully"
-        );
-        setLoader(false);
-        navigate("/success");
-      } else {
+          toastHandle(
+            true,
+            "Congrats! Your Premium Subscription Activated Successfully"
+          );
+          setLoader(false);
+          navigate("/success");
+      }else{
         toastHandle(false, "Payment Unsuccessfull! Please Try again");
-        setLoader(false);
+          setLoader(false);
       }
+      // const res = await axios.post(`${process.env.REACT_APP_URI}/payment`, {
+      //   token: token.id,
+      //   packageType: packageType,
+      // }
+      // );
+      // if (res.status === 200) {
+      //   props.onHide();
+      //   toastHandle(
+      //     true,
+      //     "Congrats! Your Premium Subscription Activated Successfully"
+      //   );
+      //   setLoader(false);
+      //   navigate("/success");
+      // } else {
+      //   toastHandle(false, "Payment Unsuccessfull! Please Try again");
+      //   setLoader(false);
+      // }
     } catch (error) {
       console.log(error);
     }

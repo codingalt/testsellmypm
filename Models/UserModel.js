@@ -21,7 +21,6 @@ const userSchema = mongoose.Schema(
     },
     confirmPass: {
       type: String,
-      required: true,
       min: [6, "Password must be atleast 6 character"],
     },
     terms: {
@@ -84,7 +83,6 @@ const userSchema = mongoose.Schema(
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 12);
-    this.confirmPass = await bcrypt.hash(this.confirmPass, 12);
   }
   next();
 });
